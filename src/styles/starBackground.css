@@ -1,0 +1,48 @@
+/* src/styles/starBackground.css */
+
+@keyframes sparkle {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 1;
+    }
+  }
+  
+  .stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    overflow: hidden;
+    z-index: -1; /* Behind the content */
+  }
+  
+  .stars::after {
+    content: "";
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    box-shadow: 
+      100px 200px white, 200px 300px white, 300px 400px white,
+      400px 500px white, 500px 600px white, 600px 700px white;
+    animation: sparkle 2s infinite ease-in-out;
+  }
+  
+  .dark-mode .stars::after {
+    box-shadow: 
+      100px 200px #ffffff80, 200px 300px #ffffff80, 300px 400px #ffffff80,
+      400px 500px #ffffff80, 500px 600px #ffffff80, 600px 700px #ffffff80;
+  }
+  
+  .light-mode .stars::after {
+    box-shadow: 
+      100px 200px #00000060, 200px 300px #00000060, 300px 400px #00000060,
+      400px 500px #00000060, 500px 600px #00000060, 600px 700px #00000060;
+  }
+  

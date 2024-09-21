@@ -1,11 +1,14 @@
 {
+  "homepage": "https://phyoewaiaung.github.io/phyowaiaung.net/",
   "name": "my-portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build" : "tsc -b && vite build",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

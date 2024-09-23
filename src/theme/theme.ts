@@ -8,6 +8,7 @@ const theme = createTheme({
     },
     secondary: {
       main: "#b6c7cc",
+      light: "#fff",
     },
   },
   colorSchemes: {
@@ -18,6 +19,7 @@ const theme = createTheme({
         },
         secondary: {
           main: "#b6c7cc",
+          light: "#fff",
         },
         background: {
           default: "#f0f0f0",
@@ -34,6 +36,7 @@ const theme = createTheme({
         },
         secondary: {
           main: "#4c585c", // Light pink for dark mode
+          light: "#43484a",
         },
         background: {
           default: "#121212", // Dark background for dark mode

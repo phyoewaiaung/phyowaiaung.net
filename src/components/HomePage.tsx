@@ -2,6 +2,7 @@ import { Box, Container, Typography } from "@mui/material";
 import React from "react";
 import SkillUi from "src/components/SkillUi";
 import Grid from "@mui/material/Grid2";
+import ContactInfoWithImage from "src/components/ContactInfoWithImage";
 
 const HomePage: React.FC = () => {
   return (
@@ -61,7 +62,7 @@ const HomePage: React.FC = () => {
           justifyContent={"center"}
           alignItems={"center"}
         >
-          <img
+          {/* <img
             src="/assets/profile.jpeg"
             alt="Profile"
             style={{
@@ -76,7 +77,8 @@ const HomePage: React.FC = () => {
               (e.currentTarget.style.transform = "scale(1.05)")
             }
             onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-          />
+          /> */}
+          <ContactInfoWithImage />
         </Grid>
       </Grid>
       {/** Skills Component */}

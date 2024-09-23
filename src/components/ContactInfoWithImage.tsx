@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, IconButton, Typography } from "@mui/material";
-import { Email, Phone, LinkedIn, GitHub } from "@mui/icons-material";
+import { Email, LinkedIn, GitHub } from "@mui/icons-material";
 
 const ContactInfoWithImage: React.FC = () => {
   const contactLinks = [

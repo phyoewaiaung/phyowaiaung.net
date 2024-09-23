@@ -36,7 +36,7 @@ const SkillUi: React.FC = () => {
       },
     },
     {
-      data: { id: "php-lib", label: "" },
+      data: { id: "php-libraries", label: "" },
       position: { x: 800, y: 300 },
       style: {
         width: 1,
@@ -100,6 +100,14 @@ const SkillUi: React.FC = () => {
         "background-fit": "contain",
       },
     },
+    {
+      data: { id: "ts", label: "TypeScript" },
+      position: { x: 600, y: 200 },
+      style: {
+        "background-image": "url('/assets/typescript.png')",
+        "background-fit": "contain",
+      },
+    },
 
     {
       data: { id: "react", label: "React", parent: "jsts-libraries" },
@@ -159,14 +167,6 @@ const SkillUi: React.FC = () => {
     },
 
     {
-      data: { id: "ts", label: "TypeScript" },
-      position: { x: 600, y: 200 },
-      style: {
-        "background-image": "url('/assets/typescript.png')",
-        "background-fit": "contain",
-      },
-    },
-    {
       data: { id: "php", label: "PHP" },
       position: { x: 800, y: 200 },
       style: {
@@ -175,7 +175,7 @@ const SkillUi: React.FC = () => {
       },
     },
     {
-      data: { id: "laravel", label: "Laravel", parent: "php-lib" },
+      data: { id: "laravel", label: "Laravel", parent: "php-libraries" },
       position: { x: 800, y: 300 },
       style: {
         "background-image": "url('/assets/laravel.png')",
@@ -192,39 +192,62 @@ const SkillUi: React.FC = () => {
     { data: { source: "skills", target: "js" } },
     { data: { source: "skills", target: "ts" } },
     { data: { source: "skills", target: "php" } },
-    // {
-    //   data: { id: "ui-css", source: "css", target: "ui-libraries" },
-    // },
-    // {
-    //   data: { id: "js-lib", source: "js", target: "jsts-libraries" },
-    // },
-    // {
-    //   data: { id: "ts-lib", source: "ts", target: "jsts-libraries" },
-    // },
-    // { data: { source: "css", target: "tailwind" } },
+    {
+      data: { id: "ui-css", source: "css", target: "ui-libraries" },
+    },
+    {
+      data: { id: "js-lib", source: "js", target: "jsts-libraries" },
+    },
+    {
+      data: { id: "ts-lib", source: "ts", target: "jsts-libraries" },
+    },
+    { data: { id: "php-lib", source: "php", target: "php-libraries" } },
     // { data: { source: "css", target: "material-ui" } },
     // { data: { source: "css", target: "core-ui" } },
   ];
 
   useEffect(() => {
     if (cyRef.current) {
-      cyRef.current.nodes().forEach((node) => {
-        node.ungrabify();
-        node.unselectify();
-      });
+      const edges = cyRef.current.edges(
+        "[source='php'],[source='skills'], [source='css'],[source='js'],[target='jsts-libraries']",
+      );
+      const nodes = edges.targets();
 
-      // Animate all edges after a short delay
-      cyRef.current.edges().forEach((edge) => {
-        edge.animate(
-          {
-            style: { opacity: 1 }, // Animate to visible
-          },
-          {
-            duration: 1000, // Animation duration
-            easing: "ease-in-out", // Easing function
-          },
-        );
-      });
+      // Function to animate the nodes and edges with a delay
+      const animateNodesAndEdges = (i = 0) => {
+        if (i < edges.length) {
+          console.log(i);
+          // Animate edge
+          edges[i].animate(
+            {
+              style: { opacity: 1 }, // Animate edge to visible
+            },
+            {
+              duration: 500, // Animation duration
+              easing: "ease-in-out", // Easing function
+              complete: () => animateNodesAndEdges(i + 1), // Proceed to the next node and edge
+            },
+          );
+
+          try {
+            // Animate the connected node
+            nodes[i].animate(
+              {
+                style: { opacity: 1 }, // Animate node to visible
+              },
+              {
+                duration: 500,
+                easing: "ease-in-out",
+              },
+            );
+          } catch (e) {
+            console.log(e);
+          }
+        }
+      };
+
+      // Start animating the nodes and edges one by one
+      animateNodesAndEdges();
     }
   }, []);
 
@@ -234,7 +257,7 @@ const SkillUi: React.FC = () => {
       elements={elements}
       userPanningEnabled={false}
       userZoomingEnabled={false}
-      style={{ width: "100%", height: "30vw" }}
+      style={{ width: "100%", height: "27vw" }}
       stylesheet={[
         {
           selector: "node",
@@ -251,6 +274,7 @@ const SkillUi: React.FC = () => {
             height: 40, // Increased height for padding effect
             "font-size": "12px",
             shape: "rectangle", // Rounded rectangle for padding around the label
+            opacity: 0,
           },
         },
         {
@@ -266,12 +290,20 @@ const SkillUi: React.FC = () => {
             "text-halign": "center",
             "text-background-opacity": 0,
             "background-opacity": 1,
+            opacity: 1,
+          },
+        },
+        {
+          selector:
+            "node[id='bootstrap'], node[id='tailwind'], node[id='material-ui'],node[id='core-ui'],node[id='react'], node[id='vue'], node[id='jquery'],node[id='nodejs'],node[id='laravel']",
+          style: {
+            opacity: 1,
           },
         },
         {
           selector: "edge",
           style: {
-            width: 1,
+            width: 0.5,
             "overlay-padding": 0,
             opacity: 0,
             "line-color": "#007bff",
@@ -279,17 +311,17 @@ const SkillUi: React.FC = () => {
             // "target-arrow-shape": "triangle",
           },
         },
-        {
-          selector: "edge[id='ui-css'], edge[id='js-lib'], edge[id='ts-lib']",
-          style: {
-            width: 1,
-            "overlay-padding": 0,
-            opacity: 0,
-            "line-color": "#007bff",
-            // "target-arrow-color": "#ccc",
-            // "target-arrow-shape": "triangle",
-          },
-        },
+        // {
+        //   selector: "edge[id='ui-css'], edge[id='js-lib'], edge[id='ts-lib']",
+        //   style: {
+        //     width: 1,
+        //     "overlay-padding": 0,
+        //     opacity: 0,
+        //     "line-color": "#007bff",
+        //     // "target-arrow-color": "#ccc",
+        //     // "target-arrow-shape": "triangle",
+        //   },
+        // },
       ]}
       layout={{ name: "preset" }}
     />

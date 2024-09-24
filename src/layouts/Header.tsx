@@ -15,7 +15,7 @@ const Header = () => {
       position="sticky"
       sx={{
         top: 0,
-        height: "4vw",
+        height: "70px",
         backgroundColor: "secondary.main",
         opacity: 0.9,
       }}
@@ -33,16 +33,16 @@ const Header = () => {
             <DarkModeIcon
               sx={{
                 color: "primary.main",
-                width: "2vw",
-                height: "2vw",
+                width: "40px",
+                height: "40px",
               }}
             />
           ) : (
             <LightModeIcon
               sx={{
                 color: "primary.main",
-                width: "2vw",
-                height: "2vw",
+                width: "40px",
+                height: "40px",
               }}
             />
           )}

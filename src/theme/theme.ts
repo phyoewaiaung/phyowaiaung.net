@@ -1,5 +1,37 @@
 import { createTheme } from "@mui/material";
 
+// Extend MUI theme with custom properties
+declare module "@mui/material/styles" {
+  interface Theme {
+    customShadows: {
+      lightShadow: string;
+      darkShadow: string;
+    };
+    customSpacing: {
+      largeSpacing: number;
+    };
+    cardBackground: {
+      main: string;
+      light: string;
+    };
+  }
+
+  // Allow configuration using `createTheme`
+  interface ThemeOptions {
+    customShadows?: {
+      lightShadow?: string;
+      darkShadow?: string;
+    };
+    customSpacing?: {
+      largeSpacing?: number;
+    };
+    cardBackground: {
+      main?: string;
+      light?: string;
+    };
+  }
+}
+
 const theme = createTheme({
   palette: {
     mode: "light", // Default mode is light, will be toggled dynamically
@@ -46,6 +78,18 @@ const theme = createTheme({
         },
       },
     },
+  },
+  // Add custom properties
+  customShadows: {
+    lightShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+    darkShadow: "0px 4px 12px rgba(0, 0, 0, 0.6)",
+  },
+  customSpacing: {
+    largeSpacing: 24,
+  },
+  cardBackground: {
+    main: "#c9d3d6",
+    light: "#7dc5db",
   },
 });
 

@@ -38,27 +38,47 @@ const skillCategories: SkillCategory[] = [
     skills: [
       {
         name: "JavaScript",
-        icon: <SiJavascript />,
+        icon: <SiJavascript color="#F7DF1E" />,
         link: "https://www.javascript.com/",
       },
       {
         name: "TypeScript",
-        icon: <SiTypescript />,
+        icon: <SiTypescript color="#3178C6" />,
         link: "https://www.typescriptlang.org/",
       },
-      { name: "jQuery", icon: <SiJquery />, link: "https://jquery.com/" },
-      { name: "React", icon: <SiReact />, link: "https://reactjs.org/" },
-      { name: "Vue", icon: <SiVuedotjs />, link: "https://vuejs.org/" },
+      {
+        name: "jQuery",
+        icon: <SiJquery color="#0769AD" />,
+        link: "https://jquery.com/",
+      },
+      {
+        name: "React",
+        icon: <SiReact color="#61DAFB" />,
+        link: "https://reactjs.org/",
+      },
+      {
+        name: "Vue",
+        icon: <SiVuedotjs color="#4FC08D" />,
+        link: "https://vuejs.org/",
+      },
     ],
   },
   {
     category: "Backend",
     skills: [
-      { name: "PHP", icon: <SiPhp />, link: "https://www.php.net/" },
-      { name: "Node.js", icon: <TbBrandNodejs />, link: "https://nodejs.org/" },
+      {
+        name: "PHP",
+        icon: <SiPhp color="#777BB4" />,
+        link: "https://www.php.net/",
+      },
+      {
+        name: "Node.js",
+        icon: <TbBrandNodejs color="#339933" />,
+        link: "https://nodejs.org/",
+      },
       {
         name: "Laravel",
-        icon: <TbBrandLaravel />,
+        icon: <TbBrandLaravel color="#FF2D20" />,
         link: "https://laravel.com/",
       },
     ],
@@ -66,16 +86,24 @@ const skillCategories: SkillCategory[] = [
   {
     category: "UI Frameworks",
     skills: [
-      { name: "Material-UI", icon: <SiMui />, link: "https://mui.com/" },
-      { name: "CoreUI", icon: <SiBootstrap />, link: "https://coreui.io/" }, // Placeholder for CoreUI
+      {
+        name: "Material-UI",
+        icon: <SiMui color="#007FFF" />,
+        link: "https://mui.com/",
+      },
+      {
+        name: "CoreUI",
+        icon: <SiBootstrap color="#563D7C" />,
+        link: "https://coreui.io/",
+      }, // Placeholder for CoreUI
       {
         name: "Bootstrap",
-        icon: <SiBootstrap />,
+        icon: <SiBootstrap color="#7952B3" />,
         link: "https://getbootstrap.com/",
       },
       {
         name: "Tailwind",
-        icon: <SiTailwindcss />,
+        icon: <SiTailwindcss color="#06B6D4" />,
         link: "https://tailwindcss.com/",
       },
     ],
@@ -88,11 +116,15 @@ const SkillsComponent: React.FC = () => {
   return (
     <Box
       sx={{
-        padding: 4,
+        py: 4,
+        px: {
+          md: "300px",
+          sm: "15px",
+        },
         minHeight: "100vh",
       }}
     >
-      <Typography textAlign={"center"} gutterBottom>
+      <Typography textAlign={"center"} mb={"50px"}>
         <span className="ont-extrabold bg-gradient-to-r from-purple-700 to-sky-600 bg-clip-text text-2xl text-3xl text-4xl font-bold tracking-tight text-gray-900 text-transparent hover:from-sky-600 hover:to-blue-700">
           Core Technologies
         </span>
@@ -117,7 +149,7 @@ const SkillsComponent: React.FC = () => {
                   <Card
                     sx={{
                       textAlign: "center",
-                      padding: 2,
+                      padding: 1.5,
                       height: "100%",
                       transition:
                         "transform 0.3s, box-shadow 0.3s, background 0.5s",
@@ -126,17 +158,24 @@ const SkillsComponent: React.FC = () => {
                       "&:hover": {
                         transform: "scale(1.05)",
                         boxShadow: theme.shadows[6],
-                        // background: `linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
                       },
                     }}
                   >
-                    <CardContent>
+                    <CardContent
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        gap: 1,
+                        padding: 0,
+                        paddingBottom: "0 !important",
+                      }}
+                    >
                       <Box
                         sx={{
                           fontSize: 50,
                           color: theme.palette.primary.main,
                           transition: "color 0.3s",
-                          // "&:hover": { color: theme.palette.secondary.main },
                         }}
                       >
                         {skill.icon}

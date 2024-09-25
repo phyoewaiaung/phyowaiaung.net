@@ -1,4 +1,4 @@
-import { AppBar, Box, IconButton } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { useColorScheme } from "@mui/material/styles";
@@ -11,10 +11,11 @@ const Header = () => {
   };
 
   return (
-    <AppBar
-      position="sticky"
+    <Box
       sx={{
+        zIndex: 1,
         top: 0,
+        position: "sticky",
         height: "70px",
         backgroundColor: "secondary.main",
         opacity: 0.9,
@@ -48,7 +49,7 @@ const Header = () => {
           )}
         </IconButton>
       </Box>
-    </AppBar>
+    </Box>
   );
 };
 

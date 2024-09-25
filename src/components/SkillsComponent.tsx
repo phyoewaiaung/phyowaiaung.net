@@ -130,7 +130,7 @@ const SkillsComponent: React.FC = () => {
                       },
                     }}
                   >
-                    <CardContent sx={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+                    <CardContent sx={{display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column"}}>
                       <Box
                         sx={{
                           fontSize: 50,

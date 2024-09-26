@@ -141,7 +141,7 @@ const SkillsComponent: React.FC = () => {
           md: "300px",
           sm: "15px",
         },
-        minHeight: "100vh",
+        // minHeight: "100vh",
       }}
     >
       <Typography textAlign={"center"} mb={"50px"}>

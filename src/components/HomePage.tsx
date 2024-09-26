@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 import React from "react";
+import Experiences from "src/components/Experiences";
 import Profile from "src/components/Profile";
 import SkillsComponent from "src/components/SkillsComponent";
 
@@ -11,6 +12,9 @@ const HomePage: React.FC = () => {
 
       {/** skills */}
       <SkillsComponent />
+
+      {/** experiences */}
+      <Experiences />
     </Box>
   );
 };

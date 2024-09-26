@@ -22,3 +22,13 @@
   width: 1px; /* Width of the scrollbar */
   height: 1px; /* Height of the scrollbar for horizontal scroll */
 }
+.progress-bar {
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: #0055ff;
+  transform-origin: 0%;
+}

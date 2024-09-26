@@ -80,7 +80,7 @@ const skillCategories: SkillCategory[] = [
         name: "CoreUI",
         icon: <img src="/assets/coreui.png" width={"50px"} height={"50px"} />,
         link: "https://coreui.io/",
-      }, 
+      },
     ],
   },
   {
@@ -145,7 +145,7 @@ const SkillsComponent: React.FC = () => {
       }}
     >
       <Typography textAlign={"center"} mb={"50px"}>
-        <span className="ont-extrabold bg-gradient-to-r from-purple-700 to-sky-600 bg-clip-text text-2xl text-3xl text-4xl font-bold tracking-tight text-gray-900 text-transparent hover:from-sky-600 hover:to-blue-700">
+        <span className="ont-extrabold bg-gradient-to-r from-purple-700 to-sky-600 bg-clip-text text-4xl font-bold tracking-tight text-gray-900 text-transparent hover:from-sky-600 hover:to-blue-700">
           Core Technologies
         </span>
       </Typography>

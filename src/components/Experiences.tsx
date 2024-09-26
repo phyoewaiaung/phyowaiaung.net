@@ -12,9 +12,13 @@ import {
   Card,
   CardContent,
   Avatar,
+  StepConnector,
+  stepConnectorClasses,
 } from "@mui/material";
 import JavascriptIcon from "@mui/icons-material/Javascript";
 import PhpIcon from "@mui/icons-material/Php";
+import { styled } from "@mui/material/styles";
+import { Work } from "@mui/icons-material";
 
 type ExperienceProps = {
   title: string;
@@ -41,7 +45,6 @@ const experiences: ExperienceProps[] = [
       "Built full-stack applications, focusing on backend with PHP and Laravel.",
     logo: "/assets/xenoptics.png", // Example logo path
   },
-
   {
     title: "Software Engineer",
     company: "BrycenMyanmar Comp Ltd.",
@@ -77,6 +80,51 @@ const experiences: ExperienceProps[] = [
   // Add more experiences here
 ];
 
+const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
+  [`&.${stepConnectorClasses.alternativeLabel}`]: {
+    top: 22,
+  },
+  [`&.${stepConnectorClasses.active}`]: {
+    [`& .${stepConnectorClasses.line}`]: {
+      backgroundImage:
+        "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)",
+    },
+  },
+  [`&.${stepConnectorClasses.completed}`]: {
+    [`& .${stepConnectorClasses.line}`]: {
+      backgroundImage:
+        "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)",
+    },
+  },
+  [`& .${stepConnectorClasses.line}`]: {
+    height: 3,
+    border: 0,
+    backgroundColor: "#eaeaf0",
+    borderRadius: 1,
+    ...theme.applyStyles("dark", {
+      backgroundColor: theme.palette.grey[800],
+    }),
+  },
+}));
+
+// StepIcon Component
+const StepIcon: React.FC<{ active?: boolean; completed?: boolean }> = ({
+  active,
+  completed,
+}) => {
+  return (
+    <Work
+      sx={{
+        color: completed
+          ? "success.main"
+          : active
+            ? "primary.main"
+            : "action.disabled",
+      }}
+    />
+  );
+};
+
 const ExperienceStepper = () => {
   return (
     <Box
@@ -86,7 +134,6 @@ const ExperienceStepper = () => {
           md: "300px",
           sm: "15px",
         },
-        // minHeight: "100vh",
       }}
     >
       <Typography textAlign={"center"} mb={"50px"}>
@@ -94,10 +141,10 @@ const ExperienceStepper = () => {
           Professional Work Experiences
         </span>
       </Typography>
-      <Stepper orientation="vertical">
+      <Stepper orientation="vertical" connector={<ColorlibConnector />}>
         {experiences.map((exp, index) => (
           <Step key={index} active={true}>
-            <StepLabel>
+            <StepLabel StepIconComponent={StepIcon}>
               <Grid container alignItems="center" spacing={2}>
                 <Grid item>
                   {/* Company logo */}

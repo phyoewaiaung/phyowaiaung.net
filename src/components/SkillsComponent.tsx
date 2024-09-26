@@ -87,16 +87,6 @@ const skillCategories: SkillCategory[] = [
     category: "UI Frameworks",
     skills: [
       {
-        name: "Material-UI",
-        icon: <SiMui color="#007FFF" />,
-        link: "https://mui.com/",
-      },
-      {
-        name: "CoreUI",
-        icon: <SiBootstrap color="#563D7C" />,
-        link: "https://coreui.io/",
-      }, // Placeholder for CoreUI
-      {
         name: "Bootstrap",
         icon: <SiBootstrap color="#7952B3" />,
         link: "https://getbootstrap.com/",
@@ -106,6 +96,16 @@ const skillCategories: SkillCategory[] = [
         icon: <SiTailwindcss color="#06B6D4" />,
         link: "https://tailwindcss.com/",
       },
+      {
+        name: "Material-UI",
+        icon: <SiMui color="#007FFF" />,
+        link: "https://mui.com/",
+      },
+      {
+        name: "CoreUI",
+        icon: <img src="/assets/coreui.png" width={"50px"} height={"50px"} />,
+        link: "https://coreui.io/",
+      }, // Placeholder for CoreUI
     ],
   },
 ];
@@ -139,7 +139,7 @@ const SkillsComponent: React.FC = () => {
           </Typography>
           <Grid container spacing={3}>
             {category.skills.map((skill) => (
-              <Grid item xs={6} sm={4} md={3} lg={2} key={skill.name}>
+              <Grid item xs={6} sm={4} md={3} lg={3} key={skill.name}>
                 <a
                   href={skill.link}
                   target="_blank"
@@ -149,7 +149,7 @@ const SkillsComponent: React.FC = () => {
                   <Card
                     sx={{
                       textAlign: "center",
-                      padding: 1.5,
+                      padding: "10px",
                       height: "100%",
                       transition:
                         "transform 0.3s, box-shadow 0.3s, background 0.5s",
@@ -180,10 +180,7 @@ const SkillsComponent: React.FC = () => {
                       >
                         {skill.icon}
                       </Box>
-                      <Typography
-                        variant="body1"
-                        sx={{ marginTop: 1, fontWeight: "bold" }}
-                      >
+                      <Typography variant="body1" sx={{ fontWeight: "bold" }}>
                         {skill.name}
                       </Typography>
                     </CardContent>

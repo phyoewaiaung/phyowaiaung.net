@@ -34,7 +34,7 @@ interface SkillCategory {
 
 const skillCategories: SkillCategory[] = [
   {
-    category: "Frontend",
+    category: "Frontend Development",
     skills: [
       {
         name: "JavaScript",
@@ -61,31 +61,6 @@ const skillCategories: SkillCategory[] = [
         icon: <SiVuedotjs color="#4FC08D" />,
         link: "https://vuejs.org/",
       },
-    ],
-  },
-  {
-    category: "Backend",
-    skills: [
-      {
-        name: "PHP",
-        icon: <SiPhp color="#777BB4" />,
-        link: "https://www.php.net/",
-      },
-      {
-        name: "Node.js",
-        icon: <TbBrandNodejs color="#339933" />,
-        link: "https://nodejs.org/",
-      },
-      {
-        name: "Laravel",
-        icon: <TbBrandLaravel color="#FF2D20" />,
-        link: "https://laravel.com/",
-      },
-    ],
-  },
-  {
-    category: "UI Frameworks",
-    skills: [
       {
         name: "Bootstrap",
         icon: <SiBootstrap color="#7952B3" />,
@@ -105,9 +80,54 @@ const skillCategories: SkillCategory[] = [
         name: "CoreUI",
         icon: <img src="/assets/coreui.png" width={"50px"} height={"50px"} />,
         link: "https://coreui.io/",
-      }, // Placeholder for CoreUI
+      }, 
     ],
   },
+  {
+    category: "Backend Development",
+    skills: [
+      {
+        name: "PHP",
+        icon: <SiPhp color="#777BB4" />,
+        link: "https://www.php.net/",
+      },
+      {
+        name: "Node.js",
+        icon: <TbBrandNodejs color="#339933" />,
+        link: "https://nodejs.org/",
+      },
+      {
+        name: "Laravel",
+        icon: <TbBrandLaravel color="#FF2D20" />,
+        link: "https://laravel.com/",
+      },
+    ],
+  },
+  // {
+  //   category: "UI Frameworks",
+  //   skills: [
+  //     {
+  //       name: "Bootstrap",
+  //       icon: <SiBootstrap color="#7952B3" />,
+  //       link: "https://getbootstrap.com/",
+  //     },
+  //     {
+  //       name: "Tailwind",
+  //       icon: <SiTailwindcss color="#06B6D4" />,
+  //       link: "https://tailwindcss.com/",
+  //     },
+  //     {
+  //       name: "Material-UI",
+  //       icon: <SiMui color="#007FFF" />,
+  //       link: "https://mui.com/",
+  //     },
+  //     {
+  //       name: "CoreUI",
+  //       icon: <img src="/assets/coreui.png" width={"50px"} height={"50px"} />,
+  //       link: "https://coreui.io/",
+  //     }, // Placeholder for CoreUI
+  //   ],
+  // },
 ];
 
 const SkillsComponent: React.FC = () => {

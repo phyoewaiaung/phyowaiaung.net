@@ -145,7 +145,12 @@ const ExperienceStepper = () => {
         {experiences.map((exp, index) => (
           <Step key={index} active={true}>
             <StepLabel StepIconComponent={StepIcon}>
-              <Grid container alignItems="center" spacing={2}>
+              <Grid
+                container
+                alignItems="center"
+                spacing={2}
+                flexWrap={"nowrap"}
+              >
                 <Grid item>
                   {/* Company logo */}
                   <Avatar

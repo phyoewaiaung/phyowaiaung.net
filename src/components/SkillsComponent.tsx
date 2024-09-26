@@ -184,7 +184,7 @@ const SkillsComponent: React.FC = () => {
                     <CardContent
                       sx={{
                         display: "flex",
-                        justifyContent: "center",
+                        justifyContent: "start",
                         alignItems: "center",
                         gap: 1,
                         padding: 0,

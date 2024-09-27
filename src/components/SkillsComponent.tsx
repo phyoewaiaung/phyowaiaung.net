@@ -138,7 +138,9 @@ const SkillsComponent: React.FC = () => {
       sx={{
         py: 4,
         px: {
-          md: "300px",
+          xl: "300px",
+          lg: "200px",
+          md: "100px",
           sm: "15px",
         },
         // minHeight: "100vh",
@@ -159,7 +161,7 @@ const SkillsComponent: React.FC = () => {
           </Typography>
           <Grid container spacing={3}>
             {category.skills.map((skill) => (
-              <Grid item xs={6} sm={4} md={4} lg={2} key={skill.name}>
+              <Grid item xs={6} sm={4} md={4} lg={3} key={skill.name}>
                 <a
                   href={skill.link}
                   target="_blank"

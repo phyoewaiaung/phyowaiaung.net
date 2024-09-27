@@ -12,13 +12,11 @@ import {
   Card,
   CardContent,
   Avatar,
-  StepConnector,
-  stepConnectorClasses,
 } from "@mui/material";
 import JavascriptIcon from "@mui/icons-material/Javascript";
 import PhpIcon from "@mui/icons-material/Php";
-import { styled } from "@mui/material/styles";
 import { Work } from "@mui/icons-material";
+import { keyframes } from "@emotion/react"; // Import keyframes for animation
 
 type ExperienceProps = {
   title: string;
@@ -26,7 +24,7 @@ type ExperienceProps = {
   period: string;
   techStack: string[];
   description: string;
-  logo: string; // New field for company logo URL
+  logo: string;
 };
 
 const experiences: ExperienceProps[] = [
@@ -35,15 +33,15 @@ const experiences: ExperienceProps[] = [
     company: "Xenoptics Comp Ltd.",
     period: "16 Oct 2023 - present",
     techStack: [
-      "Javascript",
+      "JavaScript",
       "Typescript",
       "React",
       "CytoscapeJs",
       "Material-UI",
     ],
     description:
-      "Built full-stack applications, focusing on backend with PHP and Laravel.",
-    logo: "/assets/xenoptics.png", // Example logo path
+      "As a frontend developer, I am currently working on developing network management system designed to monitor and manage machines across the network. My role involves building user-friendly user interfaces and interactive visualizations for real-time monitoring of machine statuses, performance metrics, and alert notifications. I collaborate closely with backend teams to integrate APIs, using technologies such as React, TypeScript, and Redux for state management, and Cytoscape.js for visualizing network topologies.",
+    logo: "/assets/xenoptics.png",
   },
   {
     title: "Software Engineer",
@@ -58,8 +56,8 @@ const experiences: ExperienceProps[] = [
       "Laravel",
     ],
     description:
-      "Developed responsive web applications with modern tech stack.",
-    logo: "/assets/brycen.png", // Example logo path
+      "As a Software Engineer, I mainly focused on frontend development using React to build user interfaces for an online booking system, resume management system, and HR system, while collaborating on backend integration with Laravel.",
+    logo: "/assets/brycen.png",
   },
   {
     title: "Software Engineer Intern",
@@ -74,56 +72,28 @@ const experiences: ExperienceProps[] = [
       "Laravel",
     ],
     description:
-      "Developed responsive web applications with modern tech stack.",
-    logo: "/assets/brycen.png", // Example logo path
+      "During my Software Engineer Internship, I worked with JavaScript, PHP, React, and Laravel to develop student and employee registration systems.",
+    logo: "/assets/brycen.png",
   },
-  // Add more experiences here
 ];
 
-const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
-  [`&.${stepConnectorClasses.alternativeLabel}`]: {
-    top: 22,
-  },
-  [`&.${stepConnectorClasses.active}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      backgroundImage:
-        "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)",
-    },
-  },
-  [`&.${stepConnectorClasses.completed}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      backgroundImage:
-        "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)",
-    },
-  },
-  [`& .${stepConnectorClasses.line}`]: {
-    height: 3,
-    border: 0,
-    backgroundColor: "#eaeaf0",
-    borderRadius: 1,
-    ...theme.applyStyles("dark", {
-      backgroundColor: theme.palette.grey[800],
-    }),
-  },
-}));
-
 // StepIcon Component
-const StepIcon: React.FC<{ active?: boolean; completed?: boolean }> = ({
-  active,
-  completed,
-}) => {
+const StepIcon: React.FC<{ isCurrent?: boolean }> = ({ isCurrent }) => {
   return (
     <Work
       sx={{
-        color: completed
-          ? "success.main"
-          : active
-            ? "primary.main"
-            : "action.disabled",
+        color: isCurrent ? "primary.main" : "action.disabled", // Color only applied for the current step
       }}
     />
   );
 };
+
+// Define the fade-in fade-out animation
+const fadeAnimation = keyframes`
+  0% { background-color: rgba(0, 128, 0, 0.2); }
+  50% { background-color: rgba(0, 128, 0, 0.5); }
+  100% { background-color: rgba(0, 128, 0, 0.2); }
+`;
 
 const ExperienceStepper = () => {
   return (
@@ -131,7 +101,9 @@ const ExperienceStepper = () => {
       sx={{
         py: 4,
         px: {
-          md: "300px",
+          xl: "300px",
+          lg: "200px",
+          md: "100px",
           sm: "15px",
         },
       }}
@@ -141,60 +113,84 @@ const ExperienceStepper = () => {
           Professional Work Experiences
         </span>
       </Typography>
-      <Stepper orientation="vertical" connector={<ColorlibConnector />}>
-        {experiences.map((exp, index) => (
-          <Step key={index} active={true}>
-            <StepLabel StepIconComponent={StepIcon}>
-              <Grid
-                container
-                alignItems="center"
-                spacing={2}
-                flexWrap={"nowrap"}
+      <Stepper orientation="vertical">
+        {experiences.map((exp, index) => {
+          const isCurrent = index === 0; // Check if it's the first experience
+          return (
+            <Step key={index} active={true}>
+              <StepLabel
+                StepIconComponent={() => <StepIcon isCurrent={isCurrent} />}
               >
-                <Grid item>
-                  {/* Company logo */}
-                  <Avatar
-                    alt={exp.company}
-                    src={exp.logo}
-                    sx={{ width: 56, height: 56 }}
-                  />
-                </Grid>
-                <Grid item>
-                  <Typography variant="h6">{exp.title}</Typography>
-                  <Typography variant="subtitle1" color="textSecondary">
-                    {exp.company} | {exp.period}
-                  </Typography>
-                </Grid>
-              </Grid>
-            </StepLabel>
-            <StepContent>
-              <Card variant="outlined" sx={{ mb: 2 }}>
-                <CardContent>
-                  <Typography variant="body1" paragraph>
-                    {exp.description}
-                  </Typography>
-                  <Grid container spacing={1}>
-                    {exp.techStack.map((tech, techIndex) => (
-                      <Grid item key={techIndex}>
-                        <Chip
-                          icon={
-                            tech === "JavaScript" ? (
-                              <JavascriptIcon />
-                            ) : tech === "PHP" ? (
-                              <PhpIcon />
-                            ) : undefined
-                          }
-                          label={tech}
-                          variant="outlined"
-                        />
-                      </Grid>
-                    ))}
+                <Grid
+                  container
+                  alignItems="center"
+                  spacing={2}
+                  flexWrap={"nowrap"}
+                >
+                  <Grid item>
+                    {/* Company logo */}
+                    <Avatar
+                      alt={exp.company}
+                      src={exp.logo}
+                      sx={{ width: 56, height: 56 }}
+                    />
                   </Grid>
-                </CardContent>
-              </Card>
-            </StepContent>
-          </Step>
-        ))}
+                  <Grid item>
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        color: isCurrent ? "primary.main" : "text.primary",
+                      }}
+                    >
+                      {exp.title}
+                    </Typography>
+                    <Typography variant="subtitle1" color="textSecondary">
+                      {exp.company}, {exp.period}
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </StepLabel>
+              <StepContent>
+                <Card
+                  variant="outlined"
+                  sx={{
+                    mb: 2,
+                    backgroundColor: isCurrent
+                      ? "rgba(0, 128, 0, 0.2)"
+                      : "background.paper", // Initial background color for current experience
+                    borderColor: isCurrent ? "green" : undefined,
+                    animation: isCurrent
+                      ? `${fadeAnimation} 2s ease-in-out infinite` // Apply the fade animation
+                      : undefined,
+                  }}
+                >
+                  <CardContent>
+                    <Typography variant="body1" paragraph>
+                      {exp.description}
+                    </Typography>
+                    <Grid container spacing={1}>
+                      {exp.techStack.map((tech, techIndex) => (
+                        <Grid item key={techIndex}>
+                          <Chip
+                            icon={
+                              tech === "JavaScript" ? (
+                                <JavascriptIcon />
+                              ) : tech === "PHP" ? (
+                                <PhpIcon />
+                              ) : undefined
+                            }
+                            label={tech}
+                            variant="outlined"
+                          />
+                        </Grid>
+                      ))}
+                    </Grid>
+                  </CardContent>
+                </Card>
+              </StepContent>
+            </Step>
+          );
+        })}
       </Stepper>
       <Paper square elevation={0} sx={{ p: 3, mt: 2 }}>
         <Typography>End of Journey - for now!</Typography>

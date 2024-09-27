@@ -10,12 +10,6 @@ const Profile: React.FC = () => {
       label: "Email",
       link: "mailto:phyowaiaung.pxyo@gmail.com",
     },
-    // {
-    //   icon: <Phone />,
-    //   label: "Phone",
-    //   link: "tel:+1234567890",
-    //   position: { top: "40%", right: "-1vw" },
-    // },
     {
       icon: <LinkedIn />,
       label: "LinkedIn",
@@ -26,12 +20,6 @@ const Profile: React.FC = () => {
       label: "GitHub",
       link: "https://github.com/phyoewaiaung",
     },
-    // {
-    //   icon: <Twitter />,
-    //   label: "Twitter",
-    //   link: "https://twitter.com/your-profile",
-    //   position: { top: "50%", left: "10%" },
-    // },
   ];
 
   return (
@@ -41,35 +29,33 @@ const Profile: React.FC = () => {
       justifyContent={"center"}
       alignItems={"center"}
       spacing={2}
+      sx={{ padding: { xs: "0", md: "40px" } }}
     >
       <Grid
-        size={{ sm: 12, xs: 12, md: 6 }}
         sx={{
-          height: "350px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          height: { xs: "auto", md: "350px" },
+          textAlign: { xs: "center", md: "left" },
         }}
       >
-        <Box sx={{ maxWidth: "600px" }}>
+        <Box sx={{ maxWidth: "600px", padding: "0" }}>
           <Typography
             sx={{
-              fontSize: "50px",
+              fontSize: { xs: "36px", md: "50px" },
             }}
           >
-            Hi,I'm{" "}
-            <span className="ont-extrabold bg-gradient-to-r from-purple-700 to-sky-600 bg-clip-text font-bold tracking-tight text-gray-900 text-transparent hover:from-sky-600 hover:to-blue-700">
+            Hi, I'm{" "}
+            <span className="bg-gradient-to-r from-purple-700 to-sky-600 bg-clip-text font-extrabold text-transparent">
               PHYO
             </span>
           </Typography>
           <Typography
             sx={{
-              fontSize: {
-                xs: "50px",
-                md: "80px",
-              },
+              fontSize: { xs: "40px", md: "80px" },
             }}
-            className="ont-extrabold bg-gradient-to-r from-purple-700 to-pink-600 bg-clip-text font-bold tracking-tight text-gray-900 text-transparent hover:from-pink-600 hover:to-blue-700"
+            className="bg-gradient-to-r from-purple-700 to-pink-600 bg-clip-text font-extrabold text-transparent"
           >
             Web Developer
           </Typography>
@@ -78,7 +64,9 @@ const Profile: React.FC = () => {
             sx={{
               maxWidth: "100%",
               color: "text.primary",
-              textAlign: "left",
+              textAlign: { xs: "center", md: "left" },
+              mt: "10px",
+              px: { xs: "20px", md: "0" },
             }}
           >
             A passionate web developer with 2+ years of experience building
@@ -91,16 +79,25 @@ const Profile: React.FC = () => {
             sx={{
               display: "flex",
               alignItems: "center",
-              gap: "15px",
-              pt: "10px",
-              justifyContent: "center",
+              gap: "10px",
+              pt: "15px",
+              justifyContent: { xs: "center", md: "left" },
             }}
           >
-            <span className="ont-extrabold bg-gradient-to-r from-purple-700 to-sky-600 bg-clip-text text-[20px] font-bold tracking-tight text-gray-900 text-transparent hover:from-sky-600 hover:to-blue-700">
+            <Typography
+              sx={{
+                fontSize: { xs: "18px", md: "20px" },
+                background: "linear-gradient(to right, #6a11cb, #2575fc)",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+                fontWeight: "bold",
+              }}
+            >
               Connect With Me:
-            </span>
-            {contactLinks.map((contact) => (
+            </Typography>
+            {contactLinks.map((contact, index) => (
               <IconButton
+                key={index}
                 href={contact.link}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -109,6 +106,11 @@ const Profile: React.FC = () => {
                   backgroundColor: "secondary.light",
                   borderRadius: "50%",
                   boxShadow: 3,
+                  transition: "transform 0.3s",
+                  "&:hover": {
+                    transform: "scale(1.1)",
+                    backgroundColor: "secondary.dark",
+                  },
                 }}
               >
                 {contact.icon}
@@ -118,12 +120,11 @@ const Profile: React.FC = () => {
         </Box>
       </Grid>
       <Grid
-        size={{ sm: 12, xs: 12, md: 6 }}
         sx={{
-          height: "350px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          height: { xs: "auto", md: "350px" },
         }}
       >
         <img

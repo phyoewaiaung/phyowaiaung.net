@@ -25,6 +25,8 @@ type ExperienceProps = {
   techStack: string[];
   description: string;
   logo: string;
+  link: string; // Added link
+  location: string; // Added location
 };
 
 const experiences: ExperienceProps[] = [
@@ -40,8 +42,10 @@ const experiences: ExperienceProps[] = [
       "Material-UI",
     ],
     description:
-      "As a frontend developer, I am currently working on developing network management system designed to monitor and manage machines across the network. My role involves building user-friendly user interfaces and interactive visualizations for real-time monitoring of machine statuses, performance metrics, and alert notifications. I collaborate closely with backend teams to integrate APIs, using technologies such as React, TypeScript, and Redux for state management, and Cytoscape.js for visualizing network topologies.",
+      "As a frontend developer, I am currently working on developing a network management system designed to monitor and manage machines across the network...",
     logo: "/assets/xenoptics.png",
+    link: "https://xenoptics.com/", // Company website
+    location: "THAILAND", // Company location
   },
   {
     title: "Software Engineer",
@@ -56,8 +60,10 @@ const experiences: ExperienceProps[] = [
       "Laravel",
     ],
     description:
-      "As a Software Engineer, I mainly focused on frontend development using React to build user interfaces for an online booking system, resume management system, and HR system, while collaborating on backend integration with Laravel.",
+      "As a Software Engineer, I mainly focused on frontend development using React to build user interfaces for an online booking system, resume management system, and HR system...",
     logo: "/assets/brycen.png",
+    link: "https://www.brycenmyanmar.com.mm/", // Company website
+    location: "MYANMAR", // Company location
   },
   {
     title: "Software Engineer Intern",
@@ -72,8 +78,10 @@ const experiences: ExperienceProps[] = [
       "Laravel",
     ],
     description:
-      "During my Software Engineer Internship, I worked with JavaScript, PHP, React, and Laravel to develop student and employee registration systems.",
+      "During my Software Engineer Internship, I worked with JavaScript, PHP, React, and Laravel to develop student and employee registration systems...",
     logo: "/assets/brycen.png",
+    link: "https://www.brycenmyanmar.com.mm/", // Company website
+    location: "MYANMAR", // Company location
   },
 ];
 
@@ -145,7 +153,18 @@ const ExperienceStepper = () => {
                       {exp.title}
                     </Typography>
                     <Typography variant="subtitle1" color="textSecondary">
-                      {exp.company}, {exp.period}
+                      <a
+                        href={exp.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          textDecoration: "underline",
+                          color: "inherit",
+                        }}
+                      >
+                        {exp.company} ({exp.location})
+                      </a>
+                      , {exp.period}
                     </Typography>
                   </Grid>
                 </Grid>

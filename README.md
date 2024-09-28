@@ -1,4 +1,8 @@
 # My Portfolio
+## Live Demo
+
+Check out the live version of my portfolio here: [My Portfolio](https://phyowaiaung.netlify.app/)
+
 
 Welcome to my professional portfolio! This project showcases my skills and experience as a frontend developer, utilizing modern web technologies such as React, Material-UI, TypeScript, Cytoscape.js, and Tailwind CSS.
 

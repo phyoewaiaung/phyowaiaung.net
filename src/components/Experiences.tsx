@@ -42,7 +42,7 @@ const experiences: ExperienceProps[] = [
       "Material-UI",
     ],
     description:
-      "As a frontend developer, I am currently working on developing a network management system designed to monitor and manage machines across the network...",
+      "As a frontend developer, I am currently working on developing network management system designed to monitor and manage machines across the network. My role involves building user-friendly user interfaces and interactive visualizations for real-time monitoring of machine statuses, performance metrics, and alert notifications. I collaborate closely with backend teams to integrate APIs, using technologies such as React, TypeScript, and Redux for state management, and Cytoscape.js for visualizing network topologies.",
     logo: "/assets/xenoptics.png",
     link: "https://xenoptics.com/", // Company website
     location: "THAILAND", // Company location
@@ -60,7 +60,7 @@ const experiences: ExperienceProps[] = [
       "Laravel",
     ],
     description:
-      "As a Software Engineer, I mainly focused on frontend development using React to build user interfaces for an online booking system, resume management system, and HR system...",
+      "As a Software Engineer, I mainly focused on frontend development using React to build user interfaces for an online booking system, resume management system, and HR system, while collaborating on backend integration with Laravel.",
     logo: "/assets/brycen.png",
     link: "https://www.brycenmyanmar.com.mm/", // Company website
     location: "MYANMAR", // Company location
@@ -78,7 +78,7 @@ const experiences: ExperienceProps[] = [
       "Laravel",
     ],
     description:
-      "During my Software Engineer Internship, I worked with JavaScript, PHP, React, and Laravel to develop student and employee registration systems...",
+      "During my Software Engineer Internship, I worked with JavaScript, PHP, React, and Laravel to develop student and employee registration systems.",
     logo: "/assets/brycen.png",
     link: "https://www.brycenmyanmar.com.mm/", // Company website
     location: "MYANMAR", // Company location

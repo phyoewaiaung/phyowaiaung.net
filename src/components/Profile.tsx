@@ -74,10 +74,10 @@ const Profile: React.FC = () => {
               px: { xs: "20px", md: "0" },
             }}
           >
-            A passionate web developer with 2+ years of experience building
-            user-friendly, responsive, and engaging websites and applications. I
-            specialize in React, TypeScript, and modern web technologies to
-            bring ideas to life.
+            A passionate web developer with 3 years of experience building
+            user-friendly interfaces, responsive, and engaging websites and
+            applications. I specialize in React, TypeScript, and modern web
+            technologies to bring ideas to life.
           </Typography>
 
           <Box

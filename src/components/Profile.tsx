@@ -1,10 +1,15 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import React from "react";
 import Grid from "@mui/material/Grid2";
-import { Email, LinkedIn, GitHub } from "@mui/icons-material";
+import { Email, LinkedIn, GitHub, Phone } from "@mui/icons-material";
 
 const Profile: React.FC = () => {
   const contactLinks = [
+    {
+      icon: <Phone />,
+      label: "Phone",
+      link: "tel:+660629852876", // Replace with your phone number
+    },
     {
       icon: <Email />,
       label: "Email",

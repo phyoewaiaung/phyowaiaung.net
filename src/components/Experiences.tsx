@@ -42,7 +42,7 @@ const experiences: ExperienceProps[] = [
       "Material-UI",
     ],
     description:
-      "As a frontend developer, I am currently working on developing network management system designed to monitor and manage machines across the network. My role involves building user-friendly user interfaces and interactive visualizations for real-time monitoring of machine statuses, performance metrics, and alert notifications. I collaborate closely with backend teams to integrate APIs, using technologies such as React, TypeScript, and Redux for state management, and Cytoscape.js for visualizing network topologies.",
+      "As a frontend developer, I am currently working on a network management system designed to monitor and manage machines across a network. My responsibilities include building user-friendly interfaces and creating interactive visualizations for real-time monitoring of machine statuses, performance metrics, and alert notifications. I collaborate closely with backend teams to integrate APIs, utilizing technologies such as React, TypeScript, and Redux for state management, along with Cytoscape.js for visualizing network topologies.",
     logo: "/assets/xenoptics.png",
     link: "https://xenoptics.com/", // Company website
     location: "THAILAND", // Company location

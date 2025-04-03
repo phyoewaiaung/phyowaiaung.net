@@ -17,6 +17,12 @@ import {
   SiJquery,
   SiBootstrap,
   SiTailwindcss,
+  SiExpress,
+  SiMysql,
+  SiMongodb,
+  SiGit,
+  SiDocker,
+  SiWebpack,
 } from "react-icons/si";
 import { TbBrandNodejs, TbBrandLaravel } from "react-icons/tb";
 
@@ -33,6 +39,26 @@ interface SkillCategory {
 }
 
 const skillCategories: SkillCategory[] = [
+  {
+    category: "Programming Languages",
+    skills: [
+      {
+        name: "JavaScript",
+        icon: <SiJavascript color="#F7DF1E" />,
+        link: "https://www.javascript.com/",
+      },
+      {
+        name: "TypeScript",
+        icon: <SiTypescript color="#3178C6" />,
+        link: "https://www.typescriptlang.org/",
+      },
+      {
+        name: "PHP",
+        icon: <SiPhp color="#777BB4" />,
+        link: "https://www.php.net/",
+      },
+    ],
+  },
   {
     category: "Frontend Development",
     skills: [
@@ -87,11 +113,6 @@ const skillCategories: SkillCategory[] = [
     category: "Backend Development",
     skills: [
       {
-        name: "PHP",
-        icon: <SiPhp color="#777BB4" />,
-        link: "https://www.php.net/",
-      },
-      {
         name: "Node.js",
         icon: <TbBrandNodejs color="#339933" />,
         link: "https://nodejs.org/",
@@ -100,6 +121,41 @@ const skillCategories: SkillCategory[] = [
         name: "Laravel",
         icon: <TbBrandLaravel color="#FF2D20" />,
         link: "https://laravel.com/",
+      },
+      {
+        name: "Express.js",
+        icon: <SiExpress color="#000000" />,
+        link: "https://expressjs.com/",
+      },
+      {
+        name: "MySQL",
+        icon: <SiMysql color="#4479A1" />,
+        link: "https://www.mysql.com/",
+      },
+      {
+        name: "MongoDB",
+        icon: <SiMongodb color="#47A248" />,
+        link: "https://www.mongodb.com/",
+      },
+    ],
+  },
+  {
+    category: "DevOps & Tools",
+    skills: [
+      {
+        name: "Git",
+        icon: <SiGit color="#F05032" />,
+        link: "https://git-scm.com/",
+      },
+      {
+        name: "Docker",
+        icon: <SiDocker color="#2496ED" />,
+        link: "https://www.docker.com/",
+      },
+      {
+        name: "Webpack",
+        icon: <SiWebpack color="#8DD6F9" />,
+        link: "https://webpack.js.org/",
       },
     ],
   },

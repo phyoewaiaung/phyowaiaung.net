@@ -79,10 +79,11 @@ const Profile: React.FC = () => {
               px: { xs: "20px", md: "0" },
             }}
           >
-            A passionate web developer with 3 years of experience building
-            user-friendly interfaces, responsive, and engaging websites and
-            applications. I specialize in React, TypeScript, and modern web
-            technologies to bring ideas to life.
+            A versatile Full-Stack Developer with 3 years of experience crafting robust web solutions. 
+            Proficient in both frontend (React, TypeScript, Vue.js) and backend (Node.js, PHP, Laravel) development,
+            I bring a comprehensive approach to building scalable, performant applications.
+            Experienced in developing enterprise-level solutions including network management systems,
+            booking platforms, and HR management applications.
           </Typography>
 
           <Box

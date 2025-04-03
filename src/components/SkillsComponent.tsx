@@ -1,12 +1,17 @@
+
 import React from "react";
 import {
-  Grid,
   Box,
   Typography,
   Card,
   CardContent,
   useTheme,
+  Grid,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
 } from "@mui/material";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
   SiJavascript,
   SiTypescript,
@@ -32,7 +37,6 @@ import {
 } from "react-icons/si";
 import { TbBrandNodejs, TbBrandLaravel } from "react-icons/tb";
 
-// Skill Category and Skill types
 interface Skill {
   name: string;
   icon: React.ReactNode;
@@ -79,21 +83,6 @@ const skillCategories: SkillCategory[] = [
         link: "https://ui.shadcn.com/",
       },
       {
-        name: "JavaScript",
-        icon: <SiJavascript color="#F7DF1E" />,
-        link: "https://www.javascript.com/",
-      },
-      {
-        name: "TypeScript",
-        icon: <SiTypescript color="#3178C6" />,
-        link: "https://www.typescriptlang.org/",
-      },
-      {
-        name: "jQuery",
-        icon: <SiJquery color="#0769AD" />,
-        link: "https://jquery.com/",
-      },
-      {
         name: "React",
         icon: <SiReact color="#61DAFB" />,
         link: "https://reactjs.org/",
@@ -102,6 +91,11 @@ const skillCategories: SkillCategory[] = [
         name: "Vue",
         icon: <SiVuedotjs color="#4FC08D" />,
         link: "https://vuejs.org/",
+      },
+      {
+        name: "jQuery",
+        icon: <SiJquery color="#0769AD" />,
+        link: "https://jquery.com/",
       },
       {
         name: "Bootstrap",
@@ -117,11 +111,6 @@ const skillCategories: SkillCategory[] = [
         name: "Material-UI",
         icon: <SiMui color="#007FFF" />,
         link: "https://mui.com/",
-      },
-      {
-        name: "CoreUI",
-        icon: <img src="/assets/coreui.png" width={"50px"} height={"50px"} />,
-        link: "https://coreui.io/",
       },
     ],
   },
@@ -195,31 +184,6 @@ const skillCategories: SkillCategory[] = [
       },
     ],
   },
-  // {
-  //   category: "UI Frameworks",
-  //   skills: [
-  //     {
-  //       name: "Bootstrap",
-  //       icon: <SiBootstrap color="#7952B3" />,
-  //       link: "https://getbootstrap.com/",
-  //     },
-  //     {
-  //       name: "Tailwind",
-  //       icon: <SiTailwindcss color="#06B6D4" />,
-  //       link: "https://tailwindcss.com/",
-  //     },
-  //     {
-  //       name: "Material-UI",
-  //       icon: <SiMui color="#007FFF" />,
-  //       link: "https://mui.com/",
-  //     },
-  //     {
-  //       name: "CoreUI",
-  //       icon: <img src="/assets/coreui.png" width={"50px"} height={"50px"} />,
-  //       link: "https://coreui.io/",
-  //     }, // Placeholder for CoreUI
-  //   ],
-  // },
 ];
 
 const SkillsComponent: React.FC = () => {
@@ -235,81 +199,89 @@ const SkillsComponent: React.FC = () => {
           md: "100px",
           sm: "15px",
         },
-        // minHeight: "100vh",
       }}
     >
-      <Typography textAlign={"center"} mb={"50px"}>
+      <Typography textAlign="center" mb={5}>
         <span className="ont-extrabold bg-gradient-to-r from-purple-700 to-sky-600 bg-clip-text text-4xl font-bold tracking-tight text-gray-900 text-transparent hover:from-sky-600 hover:to-blue-700">
-          Core Technologies
+          Skills & Technologies
         </span>
       </Typography>
 
-      {skillCategories.map((category) => (
-        <Box key={category.category} sx={{ marginBottom: 4 }}>
-          <Typography gutterBottom>
-            <span className="ont-extrabold bg-gradient-to-r from-purple-700 to-sky-600 bg-clip-text text-2xl font-bold tracking-tight text-gray-900 text-transparent hover:from-sky-600 hover:to-blue-700">
+      {skillCategories.map((category, index) => (
+        <Accordion
+          key={category.category}
+          defaultExpanded={index === 0}
+          sx={{
+            mb: 2,
+            background: 'transparent',
+            boxShadow: 'none',
+            '&:before': {
+              display: 'none',
+            },
+          }}
+        >
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            sx={{
+              background: theme.palette.background.paper,
+              borderRadius: '8px',
+              mb: 1,
+            }}
+          >
+            <Typography variant="h6" sx={{ color: theme.palette.primary.main }}>
               {category.category}
-            </span>
-          </Typography>
-          <Grid container spacing={3}>
-            {category.skills.map((skill) => (
-              <Grid item xs={6} sm={4} md={4} lg={3} key={skill.name}>
-                <a
-                  href={skill.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ textDecoration: "none" }}
-                >
-                  <Card
-                    sx={{
-                      textAlign: "center",
-                      padding: "10px",
-                      height: "100%",
-                      transition: "all 0.4s ease-in-out",
-                      backgroundColor: theme.palette.background.paper,
-                      color: theme.palette.text.primary,
-                      transform: "translateY(0)",
-                      "&:hover": {
-                        transform: "translateY(-10px)",
-                        boxShadow: `0 20px 30px ${theme.palette.mode === 'dark' ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0.1)'}`,
-                        backgroundImage: "linear-gradient(to bottom right, rgba(255,255,255,0.05), rgba(255,255,255,0))",
-                      },
-                      animation: "fadeInUp 0.6s ease-out",
-                      "@keyframes fadeInUp": {
-                        "0%": { opacity: 0, transform: "translateY(20px)" },
-                        "100%": { opacity: 1, transform: "translateY(0)" }
-                      }
-                    }}
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Grid container spacing={2}>
+              {category.skills.map((skill) => (
+                <Grid item xs={6} sm={4} md={3} lg={2} key={skill.name}>
+                  <a
+                    href={skill.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ textDecoration: "none" }}
                   >
-                    <CardContent
+                    <Card
                       sx={{
-                        display: "flex",
-                        justifyContent: "start",
-                        alignItems: "center",
-                        gap: 1,
-                        padding: 0,
-                        paddingBottom: "0 !important",
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        transition: 'transform 0.2s',
+                        background: theme.palette.background.paper,
+                        '&:hover': {
+                          transform: 'translateY(-4px)',
+                        },
                       }}
                     >
-                      <Box
+                      <CardContent
                         sx={{
-                          fontSize: 50,
-                          color: theme.palette.primary.main,
-                          transition: "color 0.3s",
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'center',
+                          gap: 1,
+                          padding: '8px !important',
+                          width: '100%',
                         }}
                       >
-                        {skill.icon}
-                      </Box>
-                      <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-                        {skill.name}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </a>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
+                        <Box sx={{ fontSize: 32 }}>{skill.icon}</Box>
+                        <Typography
+                          variant="caption"
+                          sx={{
+                            textAlign: 'center',
+                            color: theme.palette.text.primary,
+                          }}
+                        >
+                          {skill.name}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </a>
+                </Grid>
+              ))}
+            </Grid>
+          </AccordionDetails>
+        </Accordion>
       ))}
     </Box>
   );

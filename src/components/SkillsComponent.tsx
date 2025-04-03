@@ -188,6 +188,11 @@ const skillCategories: SkillCategory[] = [
         icon: <SiDigitalocean color="#0080FF" />,
         link: "https://www.digitalocean.com/",
       },
+      {
+        name: "Webpack",
+        icon: <SiWebpack color="#8DD6F9" />,
+        link: "https://webpack.js.org/",
+      },
     ],
   },
   // {

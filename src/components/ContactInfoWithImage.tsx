@@ -40,8 +40,8 @@ const ContactInfoWithImage: React.FC = () => {
     <Box
       sx={{
         position: "relative",
-        width: "24vw",
-        height: "21vw",
+        width: "20vw",
+        height: "18vw",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -58,8 +58,7 @@ const ContactInfoWithImage: React.FC = () => {
           borderRadius: "20px",
           boxShadow: "0 8px 20px rgba(106, 17, 203, 0.15)",
           transition: "all 0.3s ease-in-out",
-          border: "3px solid transparent",
-          background: "linear-gradient(white, white) padding-box, linear-gradient(45deg, #6a11cb, #2575fc) border-box",
+          border: "none",
         }}
         onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
         onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}

@@ -150,24 +150,7 @@ const Profile: React.FC = () => {
           }
         }}
       >
-        <Box
-          sx={{
-            position: "relative",
-            "&::before": {
-              content: '""',
-              position: "absolute",
-              inset: "-10px",
-              background: "linear-gradient(45deg, #6a11cb, #2575fc)",
-              borderRadius: "50%",
-              padding: "10px",
-              WebkitMask: 
-                "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-              WebkitMaskComposite: "xor",
-              maskComposite: "exclude",
-              animation: "rotate 4s linear infinite",
-            }
-          }}
-        >
+        <Box>
           <img
             src="/assets/profile.jpeg"
             alt="Profile"

@@ -285,6 +285,10 @@ const SkillsComponent: React.FC = () => {
                 </Grid>
               ))}
             </Grid>
+          </Box>
+        ))}
+      </Box>
+    </Box>
           </AccordionDetails>
         </Accordion>
       ))}

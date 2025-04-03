@@ -208,31 +208,32 @@ const SkillsComponent: React.FC = () => {
       </Typography>
 
       {skillCategories.map((category, index) => (
-        <Accordion
-          key={category.category}
-          defaultExpanded={index === 0}
-          sx={{
-            mb: 2,
-            background: 'transparent',
-            boxShadow: 'none',
-            '&:before': {
-              display: 'none',
-            },
-          }}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            sx={{
+        <Box key={category.category} sx={{ mb: 4 }}>
+          <Typography 
+            variant="h6" 
+            sx={{ 
+              color: theme.palette.primary.main,
+              mb: 2,
+              p: 2,
               background: theme.palette.background.paper,
               borderRadius: '8px',
-              mb: 1,
+              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+              textAlign: 'center',
+              position: 'relative',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                bottom: 0,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '60%',
+                height: '2px',
+                background: 'linear-gradient(90deg, transparent, #6a11cb, #2575fc, transparent)',
+              }
             }}
           >
-            <Typography variant="h6" sx={{ color: theme.palette.primary.main }}>
-              {category.category}
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
+            {category.category}
+          </Typography>
             <Grid container spacing={2}>
               {category.skills.map((skill) => (
                 <Grid item xs={6} sm={4} md={3} lg={2} key={skill.name}>
@@ -247,10 +248,14 @@ const SkillsComponent: React.FC = () => {
                         height: '100%',
                         display: 'flex',
                         alignItems: 'center',
-                        transition: 'transform 0.2s',
+                        transition: 'all 0.3s ease',
                         background: theme.palette.background.paper,
+                        borderRadius: '12px',
+                        border: '1px solid rgba(106, 17, 203, 0.1)',
                         '&:hover': {
                           transform: 'translateY(-4px)',
+                          boxShadow: '0 8px 16px rgba(106, 17, 203, 0.15)',
+                          border: '1px solid rgba(106, 17, 203, 0.3)',
                         },
                       }}
                     >

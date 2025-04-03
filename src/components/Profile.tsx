@@ -135,25 +135,56 @@ const Profile: React.FC = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: { xs: "auto", md: "350px" },
+          height: { xs: "auto", md: "450px" },
+          position: "relative",
+          "&::after": {
+            content: '""',
+            position: "absolute",
+            width: "400px",
+            height: "400px",
+            background: "linear-gradient(45deg, #6a11cb 0%, #2575fc 100%)",
+            borderRadius: "50%",
+            filter: "blur(60px)",
+            opacity: 0.3,
+            zIndex: -1,
+          }
         }}
       >
-        <img
-          src="/assets/profile.jpeg"
-          alt="Profile"
-          style={{
-            width: "330px",
-            height: "330px",
-            objectFit: "cover",
-            borderRadius: "50%",
-            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
-            transition: "transform 0.3s ease-in-out",
+        <Box
+          sx={{
+            position: "relative",
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              inset: "-10px",
+              background: "linear-gradient(45deg, #6a11cb, #2575fc)",
+              borderRadius: "50%",
+              padding: "10px",
+              WebkitMask: 
+                "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+              WebkitMaskComposite: "xor",
+              maskComposite: "exclude",
+              animation: "rotate 4s linear infinite",
+            }
           }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.transform = "scale(1.05)")
-          }
-          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-        />
+        >
+          <img
+            src="/assets/profile.jpeg"
+            alt="Profile"
+            style={{
+              width: "400px",
+              height: "400px",
+              objectFit: "cover",
+              borderRadius: "50%",
+              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
+              transition: "transform 0.3s ease-in-out",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "scale(1.05)")
+            }
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          />
+        </Box>
       </Grid>
     </Grid>
   );

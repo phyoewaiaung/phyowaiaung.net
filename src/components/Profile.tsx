@@ -46,13 +46,18 @@ const Profile: React.FC = () => {
         }}
       >
         <Box sx={{ maxWidth: "600px", padding: "0" }}>
-          <Typography
+          <Typography 
             sx={{
               fontSize: { xs: "36px", md: "50px" },
+              animation: "fadeIn 1s ease-in",
+              "@keyframes fadeIn": {
+                "0%": { opacity: 0, transform: "translateY(-20px)" },
+                "100%": { opacity: 1, transform: "translateY(0)" }
+              }
             }}
           >
             Hi, I'm{" "}
-            <span className="bg-gradient-to-r from-purple-700 to-sky-600 bg-clip-text font-extrabold text-transparent">
+            <span className="bg-gradient-to-r from-purple-700 via-pink-500 to-sky-600 bg-clip-text font-extrabold text-transparent animate-pulse">
               PHYO
             </span>
           </Typography>

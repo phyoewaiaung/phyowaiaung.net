@@ -175,12 +175,19 @@ const ExperienceStepper = () => {
                   sx={{
                     mb: 2,
                     backgroundColor: isCurrent
-                      ? "rgba(0, 128, 0, 0.2)"
-                      : "background.paper", // Initial background color for current experience
+                      ? "rgba(0, 128, 0, 0.1)"
+                      : "background.paper",
                     borderColor: isCurrent ? "green" : undefined,
+                    borderRadius: "12px",
+                    backdropFilter: "blur(8px)",
+                    boxShadow: isCurrent ? "0 8px 32px rgba(0, 128, 0, 0.15)" : undefined,
                     animation: isCurrent
-                      ? `${fadeAnimation} 2s ease-in-out infinite` // Apply the fade animation
-                      : undefined,
+                      ? `${fadeAnimation} 2s ease-in-out infinite`
+                      : "slideIn 0.5s ease-out",
+                    "@keyframes slideIn": {
+                      "0%": { opacity: 0, transform: "translateX(-20px)" },
+                      "100%": { opacity: 1, transform: "translateX(0)" }
+                    }
                   }}
                 >
                   <CardContent>

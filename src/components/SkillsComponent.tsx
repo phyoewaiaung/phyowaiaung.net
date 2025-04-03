@@ -173,14 +173,20 @@ const SkillsComponent: React.FC = () => {
                       textAlign: "center",
                       padding: "10px",
                       height: "100%",
-                      transition:
-                        "transform 0.3s, box-shadow 0.3s, background 0.5s",
+                      transition: "all 0.4s ease-in-out",
                       backgroundColor: theme.palette.background.paper,
                       color: theme.palette.text.primary,
+                      transform: "translateY(0)",
                       "&:hover": {
-                        transform: "scale(1.05)",
-                        boxShadow: theme.shadows[6],
+                        transform: "translateY(-10px)",
+                        boxShadow: `0 20px 30px ${theme.palette.mode === 'dark' ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0.1)'}`,
+                        backgroundImage: "linear-gradient(to bottom right, rgba(255,255,255,0.05), rgba(255,255,255,0))",
                       },
+                      animation: "fadeInUp 0.6s ease-out",
+                      "@keyframes fadeInUp": {
+                        "0%": { opacity: 0, transform: "translateY(20px)" },
+                        "100%": { opacity: 1, transform: "translateY(0)" }
+                      }
                     }}
                   >
                     <CardContent

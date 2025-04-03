@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   Box,
@@ -7,11 +6,7 @@ import {
   CardContent,
   useTheme,
   Grid,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
 } from "@mui/material";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
   SiJavascript,
   SiTypescript,
@@ -202,12 +197,12 @@ const SkillsComponent: React.FC = () => {
       }}
     >
       <Typography textAlign="center" mb={5}>
-        <span className="ont-extrabold bg-gradient-to-r from-purple-700 to-sky-600 bg-clip-text text-4xl font-bold tracking-tight text-gray-900 text-transparent hover:from-sky-600 hover:to-blue-700">
+        <span className="font-extrabold bg-gradient-to-r from-purple-700 to-sky-600 bg-clip-text text-4xl font-bold tracking-tight text-gray-900 text-transparent hover:from-sky-600 hover:to-blue-700">
           Skills & Technologies
         </span>
       </Typography>
 
-      {skillCategories.map((category, index) => (
+      {skillCategories.map((category) => (
         <Box key={category.category} sx={{ mb: 4 }}>
           <Typography 
             variant="h6" 
@@ -234,63 +229,58 @@ const SkillsComponent: React.FC = () => {
           >
             {category.category}
           </Typography>
-            <Grid container spacing={2}>
-              {category.skills.map((skill) => (
-                <Grid item xs={6} sm={4} md={3} lg={2} key={skill.name}>
-                  <a
-                    href={skill.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ textDecoration: "none" }}
+          <Grid container spacing={2}>
+            {category.skills.map((skill) => (
+              <Grid item xs={6} sm={4} md={3} lg={2} key={skill.name}>
+                <a
+                  href={skill.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: "none" }}
+                >
+                  <Card
+                    sx={{
+                      height: '100%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      transition: 'all 0.3s ease',
+                      background: theme.palette.background.paper,
+                      borderRadius: '12px',
+                      border: '1px solid rgba(106, 17, 203, 0.1)',
+                      '&:hover': {
+                        transform: 'translateY(-4px)',
+                        boxShadow: '0 8px 16px rgba(106, 17, 203, 0.15)',
+                        border: '1px solid rgba(106, 17, 203, 0.3)',
+                      },
+                    }}
                   >
-                    <Card
+                    <CardContent
                       sx={{
-                        height: '100%',
                         display: 'flex',
+                        flexDirection: 'column',
                         alignItems: 'center',
-                        transition: 'all 0.3s ease',
-                        background: theme.palette.background.paper,
-                        borderRadius: '12px',
-                        border: '1px solid rgba(106, 17, 203, 0.1)',
-                        '&:hover': {
-                          transform: 'translateY(-4px)',
-                          boxShadow: '0 8px 16px rgba(106, 17, 203, 0.15)',
-                          border: '1px solid rgba(106, 17, 203, 0.3)',
-                        },
+                        gap: 1,
+                        padding: '8px !important',
+                        width: '100%',
                       }}
                     >
-                      <CardContent
+                      <Box sx={{ fontSize: 32 }}>{skill.icon}</Box>
+                      <Typography
+                        variant="caption"
                         sx={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'center',
-                          gap: 1,
-                          padding: '8px !important',
-                          width: '100%',
+                          textAlign: 'center',
+                          color: theme.palette.text.primary,
                         }}
                       >
-                        <Box sx={{ fontSize: 32 }}>{skill.icon}</Box>
-                        <Typography
-                          variant="caption"
-                          sx={{
-                            textAlign: 'center',
-                            color: theme.palette.text.primary,
-                          }}
-                        >
-                          {skill.name}
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                  </a>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
-        ))}
-      </Box>
-    </Box>
-          </AccordionDetails>
-        </Accordion>
+                        {skill.name}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </a>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
       ))}
     </Box>
   );

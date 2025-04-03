@@ -52,12 +52,14 @@ const ContactInfoWithImage: React.FC = () => {
         src="/assets/profile.jpeg"
         alt="Profile"
         style={{
-          width: "20vw",
-          height: "20vw",
+          width: "15vw",
+          height: "15vw",
           objectFit: "cover",
-          borderRadius: "50%",
-          boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
-          transition: "transform 0.3s ease-in-out",
+          borderRadius: "20px",
+          boxShadow: "0 8px 20px rgba(106, 17, 203, 0.15)",
+          transition: "all 0.3s ease-in-out",
+          border: "3px solid transparent",
+          background: "linear-gradient(white, white) padding-box, linear-gradient(45deg, #6a11cb, #2575fc) border-box",
         }}
         onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
         onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}

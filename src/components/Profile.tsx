@@ -1,7 +1,7 @@
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, IconButton, Typography, Button } from "@mui/material";
 import React from "react";
 import Grid from "@mui/material/Grid2";
-import { Email, LinkedIn, GitHub, Phone } from "@mui/icons-material";
+import { Email, LinkedIn, GitHub, Phone, Download } from "@mui/icons-material";
 
 const Profile: React.FC = () => {
   const contactLinks = [
@@ -89,44 +89,73 @@ const Profile: React.FC = () => {
           <Box
             sx={{
               display: "flex",
+              flexDirection: { xs: "column", md: "row" },
               alignItems: "center",
-              gap: "10px",
+              gap: "15px",
               pt: "15px",
-              justifyContent: { xs: "center", md: "left" },
             }}
           >
-            <Typography
+            <Button
+              variant="contained"
+              href="/assets/cv-phyowaiaung.pdf"
+              target="_blank"
+              startIcon={<Download />}
               sx={{
-                fontSize: { xs: "18px", md: "20px" },
-                background: "linear-gradient(to right, #6a11cb, #2575fc)",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
-                fontWeight: "bold",
+                background: "linear-gradient(45deg, #6a11cb, #2575fc)",
+                borderRadius: "25px",
+                padding: "10px 25px",
+                textTransform: "none",
+                fontSize: "16px",
+                transition: "all 0.3s ease",
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 8px 20px rgba(106, 17, 203, 0.2)',
+                }
               }}
             >
-              Connect With Me:
-            </Typography>
-            {contactLinks.map((contact, index) => (
-              <IconButton
-                key={index}
-                href={contact.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                color="primary"
+              Download CV
+            </Button>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                justifyContent: { xs: "center", md: "left" },
+              }}
+            >
+              <Typography
                 sx={{
-                  backgroundColor: "secondary.light",
-                  borderRadius: "50%",
-                  boxShadow: 3,
-                  transition: "transform 0.3s",
-                  "&:hover": {
-                    transform: "scale(1.1)",
-                    backgroundColor: "secondary.dark",
-                  },
+                  fontSize: { xs: "18px", md: "20px" },
+                  background: "linear-gradient(to right, #6a11cb, #2575fc)",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                  fontWeight: "bold",
                 }}
               >
-                {contact.icon}
-              </IconButton>
-            ))}
+                Connect With Me:
+              </Typography>
+              {contactLinks.map((contact, index) => (
+                <IconButton
+                  key={index}
+                  href={contact.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  color="primary"
+                  sx={{
+                    backgroundColor: "secondary.light",
+                    borderRadius: "50%",
+                    boxShadow: 3,
+                    transition: "transform 0.3s",
+                    "&:hover": {
+                      transform: "scale(1.1)",
+                      backgroundColor: "secondary.dark",
+                    },
+                  }}
+                >
+                  {contact.icon}
+                </IconButton>
+              ))}
+            </Box>
           </Box>
         </Box>
       </Grid>

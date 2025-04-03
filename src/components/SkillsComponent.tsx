@@ -210,9 +210,6 @@ const SkillsComponent: React.FC = () => {
               color: theme.palette.primary.main,
               mb: 2,
               p: 2,
-              background: theme.palette.background.paper,
-              borderRadius: '8px',
-              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
               textAlign: 'center',
               position: 'relative',
               '&::after': {

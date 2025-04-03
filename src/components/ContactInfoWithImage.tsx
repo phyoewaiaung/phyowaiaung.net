@@ -52,8 +52,8 @@ const ContactInfoWithImage: React.FC = () => {
         src="/assets/profile.jpeg"
         alt="Profile"
         style={{
-          width: "15vw",
-          height: "15vw",
+          width: "12vw",
+          height: "12vw",
           objectFit: "cover",
           borderRadius: "20px",
           boxShadow: "0 8px 20px rgba(106, 17, 203, 0.15)",

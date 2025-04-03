@@ -155,8 +155,8 @@ const Profile: React.FC = () => {
             src="/assets/profile.jpeg"
             alt="Profile"
             style={{
-              width: "300px",
-              height: "300px",
+              width: "250px",
+              height: "250px",
               objectFit: "cover",
               borderRadius: "20px",
               boxShadow: "0 8px 20px rgba(106, 17, 203, 0.15)",

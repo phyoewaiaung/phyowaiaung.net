@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Box, TextField, Button, Typography, Alert, Snackbar } from '@mui/material';
 import emailjs from '@emailjs/browser';
@@ -23,7 +22,7 @@ const ContactForm = () => {
     e.preventDefault();
     try {
       await emailjs.send(
-        'service_63dtiye',
+        'service_nx9b1rk',
         'template_b0734n8',
         {
           from_name: formData.name,

@@ -15,6 +15,7 @@ const HomePage: React.FC = () => {
 
       {/** experiences */}
       <Experiences />
+      <ContactForm />
     </Box>
   );
 };

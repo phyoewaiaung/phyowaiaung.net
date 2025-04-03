@@ -23,6 +23,12 @@ import {
   SiGit,
   SiDocker,
   SiWebpack,
+  SiNextdotjs,
+  SiRadixui,
+  SiEslint,
+  SiGithubactions,
+  SiGitlab,
+  SiDigitalocean,
 } from "react-icons/si";
 import { TbBrandNodejs, TbBrandLaravel } from "react-icons/tb";
 
@@ -40,7 +46,7 @@ interface SkillCategory {
 
 const skillCategories: SkillCategory[] = [
   {
-    category: "Programming Languages",
+    category: "Core Technologies",
     skills: [
       {
         name: "JavaScript",
@@ -60,8 +66,18 @@ const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    category: "Frontend Development",
+    category: "Modern Frontend",
     skills: [
+      {
+        name: "Next.js",
+        icon: <SiNextdotjs color="#000000" />,
+        link: "https://nextjs.org/",
+      },
+      {
+        name: "Shadcn UI",
+        icon: <SiRadixui color="#000000" />,
+        link: "https://ui.shadcn.com/",
+      },
       {
         name: "JavaScript",
         icon: <SiJavascript color="#F7DF1E" />,
@@ -140,7 +156,7 @@ const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    category: "DevOps & Tools",
+    category: "DevOps & CI/CD",
     skills: [
       {
         name: "Git",
@@ -153,9 +169,24 @@ const skillCategories: SkillCategory[] = [
         link: "https://www.docker.com/",
       },
       {
-        name: "Webpack",
-        icon: <SiWebpack color="#8DD6F9" />,
-        link: "https://webpack.js.org/",
+        name: "ESLint",
+        icon: <SiEslint color="#4B32C3" />,
+        link: "https://eslint.org/",
+      },
+      {
+        name: "GitHub Actions",
+        icon: <SiGithubactions color="#2088FF" />,
+        link: "https://github.com/features/actions",
+      },
+      {
+        name: "GitLab CI",
+        icon: <SiGitlab color="#FCA121" />,
+        link: "https://docs.gitlab.com/ee/ci/",
+      },
+      {
+        name: "Digital Ocean",
+        icon: <SiDigitalocean color="#0080FF" />,
+        link: "https://www.digitalocean.com/",
       },
     ],
   },

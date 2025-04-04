@@ -1,5 +1,26 @@
 import { Box, IconButton, Typography, Button } from "@mui/material";
 import React from "react";
+
+import { keyframes } from "@mui/material";
+
+const lightningEffect = keyframes`
+  0% {
+    box-shadow: 0 8px 20px rgba(106, 17, 203, 0.15);
+  }
+  25% {
+    box-shadow: 0 0 50px #6a11cb, 0 0 100px #2575fc;
+  }
+  50% {
+    box-shadow: 0 8px 20px rgba(106, 17, 203, 0.15);
+  }
+  75% {
+    box-shadow: 0 0 70px #2575fc, 0 0 120px #6a11cb;
+  }
+  100% {
+    box-shadow: 0 8px 20px rgba(106, 17, 203, 0.15);
+  }
+`;
+
 import Grid from "@mui/material/Grid2";
 import { Email, LinkedIn, GitHub, Phone, Download } from "@mui/icons-material";
 
@@ -176,6 +197,9 @@ const Profile: React.FC = () => {
             filter: "blur(60px)",
             opacity: 0.3,
             zIndex: -1,
+          },
+          "& img": {
+            animation: `${lightningEffect} 1.5s infinite`
           }
         }}
       >
@@ -192,6 +216,7 @@ const Profile: React.FC = () => {
               transition: "all 0.3s ease-in-out",
               border: "3px solid transparent",
               background: "linear-gradient(white, white) padding-box, linear-gradient(45deg, #6a11cb, #2575fc) border-box",
+              animation: "lightning 1.5s infinite",
             }}
             onMouseEnter={(e) =>
               (e.currentTarget.style.transform = "scale(1.05)")

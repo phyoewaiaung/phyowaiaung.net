@@ -1,59 +1,10 @@
 import { Box, IconButton, Typography, Button } from "@mui/material";
 import React from "react";
-import { keyframes } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { Email, LinkedIn, GitHub, Phone, Download } from "@mui/icons-material";
 
-// Define animations properly
-const gradientAnimation = keyframes`
-  0% {
-    border-image: linear-gradient(45deg, #6a11cb, #2575fc, #6a11cb) 1;
-    transform: rotate(0deg);
-  }
-  50% {
-    border-image: linear-gradient(225deg, #2575fc, #6a11cb, #2575fc) 1;
-    transform: rotate(180deg);
-  }
-  100% {
-    border-image: linear-gradient(45deg, #6a11cb, #2575fc, #6a11cb) 1;
-    transform: rotate(360deg);
-  }
-`;
-
-const glowAnimation = keyframes`
-  0% {
-    box-shadow: 0 0 10px rgba(106, 17, 203, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(37, 117, 252, 0.7);
-  }
-  100% {
-    box-shadow: 0 0 10px rgba(106, 17, 203, 0.5);
-  }
-`;
-
-// Define this missing animation
-const lightningEffect = keyframes`
-  0% {
-    filter: brightness(1);
-  }
-  50% {
-    filter: brightness(1.1);
-  }
-  100% {
-    filter: brightness(1);
-  }
-`;
-
-// Define the interface for contact links
-interface ContactLink {
-  icon: React.ReactNode;
-  label: string;
-  link: string;
-}
-
 const Profile: React.FC = () => {
-  const contactLinks: ContactLink[] = [
+  const contactLinks = [
     {
       icon: <Phone />,
       label: "Phone",
@@ -79,15 +30,13 @@ const Profile: React.FC = () => {
   return (
     <Grid
       container
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
+      display={"flex"}
+      justifyContent={"center"}
+      alignItems={"center"}
       spacing={2}
       sx={{ padding: { xs: "0", md: "40px" } }}
     >
       <Grid
-        xs={12}
-        md={6}
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -211,8 +160,6 @@ const Profile: React.FC = () => {
         </Box>
       </Grid>
       <Grid
-        xs={12}
-        md={6}
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -229,9 +176,6 @@ const Profile: React.FC = () => {
             filter: "blur(60px)",
             opacity: 0.3,
             zIndex: -1,
-          },
-          "& img": {
-            animation: `${lightningEffect} 1.5s infinite`
           }
         }}
       >
@@ -246,8 +190,8 @@ const Profile: React.FC = () => {
               borderRadius: "20px",
               boxShadow: "0 8px 20px rgba(106, 17, 203, 0.15)",
               transition: "all 0.3s ease-in-out",
-              border: "4px solid transparent",
-              background: "white",
+              border: "3px solid transparent",
+              background: "linear-gradient(white, white) padding-box, linear-gradient(45deg, #6a11cb, #2575fc) border-box",
             }}
             onMouseEnter={(e) =>
               (e.currentTarget.style.transform = "scale(1.05)")

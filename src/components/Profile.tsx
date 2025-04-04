@@ -3,14 +3,8 @@ import React from "react";
 import Grid from "@mui/material/Grid2";
 import { Email, LinkedIn, GitHub, Phone, Download } from "@mui/icons-material";
 
-interface ContactLink {
-  icon: React.ReactNode;
-  label: string;
-  link: string;
-}
-
 const Profile: React.FC = () => {
-  const contactLinks: ContactLink[] = [
+  const contactLinks = [
     {
       icon: <Phone />,
       label: "Phone",
@@ -36,15 +30,13 @@ const Profile: React.FC = () => {
   return (
     <Grid
       container
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
+      display={"flex"}
+      justifyContent={"center"}
+      alignItems={"center"}
       spacing={2}
       sx={{ padding: { xs: "0", md: "40px" } }}
     >
       <Grid
-        xs={12}
-        md={6}
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -168,8 +160,6 @@ const Profile: React.FC = () => {
         </Box>
       </Grid>
       <Grid
-        xs={12}
-        md={6}
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -203,12 +193,10 @@ const Profile: React.FC = () => {
               border: "3px solid transparent",
               background: "linear-gradient(white, white) padding-box, linear-gradient(45deg, #6a11cb, #2575fc) border-box",
             }}
-            onMouseEnter={(e: React.MouseEvent<HTMLImageElement>) =>
+            onMouseEnter={(e) =>
               (e.currentTarget.style.transform = "scale(1.05)")
             }
-            onMouseLeave={(e: React.MouseEvent<HTMLImageElement>) => 
-              (e.currentTarget.style.transform = "scale(1)")
-            }
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           />
         </Box>
       </Grid>

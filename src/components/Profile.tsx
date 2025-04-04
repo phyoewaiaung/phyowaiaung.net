@@ -3,8 +3,14 @@ import React from "react";
 import Grid from "@mui/material/Grid2";
 import { Email, LinkedIn, GitHub, Phone, Download } from "@mui/icons-material";
 
+interface ContactLink {
+  icon: React.ReactNode;
+  label: string;
+  link: string;
+}
+
 const Profile: React.FC = () => {
-  const contactLinks = [
+  const contactLinks: ContactLink[] = [
     {
       icon: <Phone />,
       label: "Phone",
@@ -30,13 +36,15 @@ const Profile: React.FC = () => {
   return (
     <Grid
       container
-      display={"flex"}
-      justifyContent={"center"}
-      alignItems={"center"}
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
       spacing={2}
       sx={{ padding: { xs: "0", md: "40px" } }}
     >
       <Grid
+        xs={12}
+        md={6}
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -160,6 +168,8 @@ const Profile: React.FC = () => {
         </Box>
       </Grid>
       <Grid
+        xs={12}
+        md={6}
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -192,29 +202,13 @@ const Profile: React.FC = () => {
               transition: "all 0.3s ease-in-out",
               border: "3px solid transparent",
               background: "linear-gradient(white, white) padding-box, linear-gradient(45deg, #6a11cb, #2575fc) border-box",
-              animation: "lightning 1.5s infinite",
-              "@keyframes lightning": {
-                "0%": {
-                  boxShadow: "0 8px 20px rgba(106, 17, 203, 0.15)"
-                },
-                "20%": {
-                  boxShadow: "0 0 30px #6a11cb, 0 0 50px #2575fc"
-                },
-                "30%": {
-                  boxShadow: "0 8px 20px rgba(106, 17, 203, 0.15)"
-                },
-                "60%": {
-                  boxShadow: "0 0 40px #2575fc, 0 0 60px #6a11cb"
-                },
-                "100%": {
-                  boxShadow: "0 8px 20px rgba(106, 17, 203, 0.15)"
-                }
-              }
             }}
-            onMouseEnter={(e) =>
+            onMouseEnter={(e: React.MouseEvent<HTMLImageElement>) =>
               (e.currentTarget.style.transform = "scale(1.05)")
             }
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            onMouseLeave={(e: React.MouseEvent<HTMLImageElement>) => 
+              (e.currentTarget.style.transform = "scale(1)")
+            }
           />
         </Box>
       </Grid>

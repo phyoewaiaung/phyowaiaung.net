@@ -202,11 +202,13 @@ const ExperienceStepper = () => {
                       sx={{
                         width: 56,
                         height: 56,
-                        border: "2px solid transparent",
-                        background: "linear-gradient(white, white) padding-box, linear-gradient(45deg, #6a11cb, #2575fc) border-box",
-                        transition: "transform 0.3s ease",
+                        boxShadow: '0 2px 8px rgba(106, 17, 203, 0.1)',
+                        border: '1px solid rgba(106, 17, 203, 0.08)',
+                        transition: 'all 0.3s ease',
                         "&:hover": {
-                          transform: "scale(1.1)",
+                          transform: "scale(1.05)",
+                          boxShadow: '0 4px 12px rgba(106, 17, 203, 0.15)',
+                          border: '1px solid rgba(106, 17, 203, 0.15)',
                         },
                       }}
                     />

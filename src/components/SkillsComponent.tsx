@@ -73,6 +73,11 @@ const skillCategories: SkillCategory[] = [
         link: "https://nextjs.org/",
       },
       {
+        name: "React Native",
+        icon: <SiReact color="#61DAFB" />,
+        link: "https://reactnative.dev/",
+      },
+      {
         name: "Shadcn UI",
         icon: <SiRadixui color="#000000" />,
         link: "https://ui.shadcn.com/",

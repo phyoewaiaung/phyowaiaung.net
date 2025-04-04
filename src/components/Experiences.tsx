@@ -259,12 +259,27 @@ const ExperienceStepper = () => {
                   sx={{
                     mb: 2,
                     background: isCurrent
-                      ? "linear-gradient(135deg, rgba(106, 17, 203, 0.05), rgba(37, 117, 252, 0.05))"
+                      ? "linear-gradient(135deg, rgba(106, 17, 203, 0.08), rgba(37, 117, 252, 0.08))"
                       : theme.palette.background.paper,
                     borderRadius: "12px",
                     backdropFilter: "blur(8px)",
-                    border: "1px solid rgba(106, 17, 203, 0.1)",
+                    border: isCurrent
+                      ? "1px solid rgba(106, 17, 203, 0.2)"
+                      : "1px solid rgba(106, 17, 203, 0.1)",
                     transition: "all 0.3s ease",
+                    animation: isCurrent
+                      ? "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite"
+                      : "none",
+                    "@keyframes pulse": {
+                      "0%, 100%": {
+                        boxShadow: "0 0 15px rgba(106, 17, 203, 0.2)",
+                        transform: "scale(1)",
+                      },
+                      "50%": {
+                        boxShadow: "0 0 25px rgba(106, 17, 203, 0.3)",
+                        transform: "scale(1.005)",
+                      },
+                    },
                     "&:hover": {
                       transform: "translateY(-4px)",
                       boxShadow: "0 8px 20px rgba(106, 17, 203, 0.15)",

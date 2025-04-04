@@ -3,21 +3,30 @@ import React from "react";
 
 import { keyframes } from "@mui/material";
 
-const lightningEffect = keyframes`
+const gradientAnimation = keyframes`
   0% {
-    box-shadow: 0 8px 20px rgba(106, 17, 203, 0.15);
-  }
-  25% {
-    box-shadow: 0 0 50px #6a11cb, 0 0 100px #2575fc;
+    border-image: linear-gradient(45deg, #6a11cb, #2575fc, #6a11cb) 1;
+    transform: rotate(0deg);
   }
   50% {
-    box-shadow: 0 8px 20px rgba(106, 17, 203, 0.15);
-  }
-  75% {
-    box-shadow: 0 0 70px #2575fc, 0 0 120px #6a11cb;
+    border-image: linear-gradient(225deg, #2575fc, #6a11cb, #2575fc) 1;
+    transform: rotate(180deg);
   }
   100% {
-    box-shadow: 0 8px 20px rgba(106, 17, 203, 0.15);
+    border-image: linear-gradient(45deg, #6a11cb, #2575fc, #6a11cb) 1;
+    transform: rotate(360deg);
+  }
+`;
+
+const glowAnimation = keyframes`
+  0% {
+    box-shadow: 0 0 10px rgba(106, 17, 203, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(37, 117, 252, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(106, 17, 203, 0.5);
   }
 `;
 
@@ -214,9 +223,9 @@ const Profile: React.FC = () => {
               borderRadius: "20px",
               boxShadow: "0 8px 20px rgba(106, 17, 203, 0.15)",
               transition: "all 0.3s ease-in-out",
-              border: "3px solid transparent",
-              background: "linear-gradient(white, white) padding-box, linear-gradient(45deg, #6a11cb, #2575fc) border-box",
-              animation: "lightning 1.5s infinite",
+              border: "4px solid transparent",
+              background: "white",
+              animation: `${glowAnimation} 3s infinite, ${gradientAnimation} 8s linear infinite`,
             }}
             onMouseEnter={(e) =>
               (e.currentTarget.style.transform = "scale(1.05)")

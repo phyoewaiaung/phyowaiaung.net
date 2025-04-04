@@ -203,10 +203,10 @@ const Profile: React.FC = () => {
               border: "3px solid transparent",
               background: "linear-gradient(white, white) padding-box, linear-gradient(45deg, #6a11cb, #2575fc) border-box",
             }}
-            onMouseEnter={(e) =>
+            onMouseEnter={(e: React.MouseEvent<HTMLImageElement>) =>
               (e.currentTarget.style.transform = "scale(1.05)")
             }
-            onMouseLeave={(e) => 
+            onMouseLeave={(e: React.MouseEvent<HTMLImageElement>) => 
               (e.currentTarget.style.transform = "scale(1)")
             }
           />

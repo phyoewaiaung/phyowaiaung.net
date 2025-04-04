@@ -1,8 +1,10 @@
 import { Box, IconButton, Typography, Button } from "@mui/material";
 import React from "react";
-
 import { keyframes } from "@mui/material";
+import Grid from "@mui/material/Grid2";
+import { Email, LinkedIn, GitHub, Phone, Download } from "@mui/icons-material";
 
+// Define animations properly
 const gradientAnimation = keyframes`
   0% {
     border-image: linear-gradient(45deg, #6a11cb, #2575fc, #6a11cb) 1;
@@ -30,11 +32,28 @@ const glowAnimation = keyframes`
   }
 `;
 
-import Grid from "@mui/material/Grid2";
-import { Email, LinkedIn, GitHub, Phone, Download } from "@mui/icons-material";
+// Define this missing animation
+const lightningEffect = keyframes`
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.1);
+  }
+  100% {
+    filter: brightness(1);
+  }
+`;
+
+// Define the interface for contact links
+interface ContactLink {
+  icon: React.ReactNode;
+  label: string;
+  link: string;
+}
 
 const Profile: React.FC = () => {
-  const contactLinks = [
+  const contactLinks: ContactLink[] = [
     {
       icon: <Phone />,
       label: "Phone",
@@ -60,13 +79,15 @@ const Profile: React.FC = () => {
   return (
     <Grid
       container
-      display={"flex"}
-      justifyContent={"center"}
-      alignItems={"center"}
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
       spacing={2}
       sx={{ padding: { xs: "0", md: "40px" } }}
     >
       <Grid
+        xs={12}
+        md={6}
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -190,6 +211,8 @@ const Profile: React.FC = () => {
         </Box>
       </Grid>
       <Grid
+        xs={12}
+        md={6}
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -225,7 +248,6 @@ const Profile: React.FC = () => {
               transition: "all 0.3s ease-in-out",
               border: "4px solid transparent",
               background: "white",
-              animation: `${glowAnimation} 3s infinite, ${gradientAnimation} 8s linear infinite`,
             }}
             onMouseEnter={(e) =>
               (e.currentTarget.style.transform = "scale(1.05)")

@@ -1,4 +1,5 @@
 import React from "react";
+import { useTheme } from "@mui/material/styles";
 import {
   Box,
   Typography,
@@ -121,6 +122,7 @@ const slideInFromLeft = keyframes`
 `;
 
 const ExperienceStepper = () => {
+  const theme = useTheme();
   return (
     <Box
       sx={{

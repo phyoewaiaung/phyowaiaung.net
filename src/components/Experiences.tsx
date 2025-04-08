@@ -239,8 +239,8 @@ const ExperienceStepper = () => {
                       transform: isCurrent ? "scale(1.03)" : "scale(1.01)",
                       boxShadow: isCurrent
                         ? theme.palette.mode === "light"
-                          ? "0 12px 40px rgba(25, 118, 210, 0.3)"
-                          : "0 12px 40px rgba(144, 202, 249, 0.3)"
+                          ? "0 12px 28px rgba(106, 17, 203, 0.2)"
+                          : "0 12px 28px rgba(144, 202, 249, 0.2)"
                         : "0 4px 20px rgba(0, 0, 0, 0.1)",
                     },
                   }}

@@ -201,26 +201,32 @@ const ExperienceStepper = () => {
                     >
                       {exp.title}
                     </Typography>
-                    <Typography variant="subtitle1" color="textSecondary">
-                      <a
-                        href={exp.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          textDecoration: "underline",
-                          color: "inherit",
-                          transition: "all 0.3s ease-in-out",
-                          "&:hover": {
-                            color: "primary.main",
-                            textDecoration: "none",
-                            transform: "scale(1.05)",
-                          },
-                        }}
-                      >
-                        {exp.company} ({exp.location})
-                      </a>
-                      , {exp.period}
-                    </Typography>
+                    <Typography 
+  variant="subtitle1" 
+  color="textSecondary"
+  component="span"
+>
+  <Box
+    component="a"
+    href={exp.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    sx={{
+      textDecoration: "underline",
+      color: "inherit",
+      transition: "all 0.3s ease-in-out",
+      "&:hover": {
+        color: "primary.main",
+        textDecoration: "none",
+        transform: "scale(1.05)",
+        display: "inline-block"
+      },
+    }}
+  >
+    {exp.company} ({exp.location})
+  </Box>
+  , {exp.period}
+</Typography>
                   </Grid>
                 </Grid>
               </StepLabel>

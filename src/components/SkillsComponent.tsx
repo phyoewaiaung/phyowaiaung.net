@@ -241,13 +241,21 @@ const SkillsComponent: React.FC = () => {
                       display: 'flex',
                       alignItems: 'center',
                       transition: 'all 0.3s ease',
-                      background: theme.palette.background.paper,
+                      background: theme.palette.mode === 'light' 
+                        ? 'rgba(255, 255, 255, 0.8)'
+                        : 'rgba(18, 18, 18, 0.8)',
                       borderRadius: '12px',
-                      border: '1px solid rgba(106, 17, 203, 0.1)',
+                      border: theme.palette.mode === 'light'
+                        ? '1px solid rgba(106, 17, 203, 0.2)'
+                        : '1px solid rgba(144, 202, 249, 0.2)',
                       '&:hover': {
                         transform: 'translateY(-4px)',
-                        boxShadow: '0 8px 16px rgba(106, 17, 203, 0.15)',
-                        border: '1px solid rgba(106, 17, 203, 0.3)',
+                        boxShadow: theme.palette.mode === 'light'
+                          ? '0 8px 16px rgba(106, 17, 203, 0.2)'
+                          : '0 8px 16px rgba(144, 202, 249, 0.2)',
+                        border: theme.palette.mode === 'light'
+                          ? '1px solid rgba(106, 17, 203, 0.5)'
+                          : '1px solid rgba(144, 202, 249, 0.5)',
                       },
                     }}
                   >

@@ -174,7 +174,15 @@ const ExperienceStepper = () => {
                     <Avatar
                       alt={exp.company}
                       src={exp.logo}
-                      sx={{ width: 56, height: 56 }}
+                      sx={{
+                        width: 56,
+                        height: 56,
+                        transition: "all 0.3s ease-in-out",
+                        "&:hover": {
+                          transform: "scale(1.15) rotate(5deg)",
+                          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+                        },
+                      }}
                     />
                   </Grid>
                   <Grid item>
@@ -201,6 +209,12 @@ const ExperienceStepper = () => {
                         style={{
                           textDecoration: "underline",
                           color: "inherit",
+                          transition: "all 0.3s ease-in-out",
+                          "&:hover": {
+                            color: "primary.main",
+                            textDecoration: "none",
+                            transform: "scale(1.05)",
+                          },
                         }}
                       >
                         {exp.company} ({exp.location})

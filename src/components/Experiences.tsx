@@ -12,10 +12,11 @@ import {
   Card,
   CardContent,
   Avatar,
-  useTheme,
 } from "@mui/material";
+import JavascriptIcon from "@mui/icons-material/Javascript";
+import PhpIcon from "@mui/icons-material/Php";
 import { Work } from "@mui/icons-material";
-import { keyframes } from "@emotion/react";
+import { keyframes } from "@emotion/react"; // Import keyframes for animation
 
 type ExperienceProps = {
   title: string;
@@ -24,8 +25,8 @@ type ExperienceProps = {
   techStack: string[];
   description: string;
   logo: string;
-  link: string;
-  location: string;
+  link: string; // Added link
+  location: string; // Added location
 };
 
 const experiences: ExperienceProps[] = [
@@ -43,8 +44,8 @@ const experiences: ExperienceProps[] = [
     description:
       "As a frontend developer, I am currently working on a network management system designed to monitor and manage machines across a network. My responsibilities include building user-friendly interfaces and creating interactive visualizations for real-time monitoring of machine statuses, performance metrics, and alert notifications. I collaborate closely with backend teams to integrate APIs, utilizing technologies such as React, TypeScript, and Redux for state management, along with Cytoscape.js for visualizing network topologies.",
     logo: "/assets/xenoptics.png",
-    link: "https://xenoptics.com/",
-    location: "THAILAND",
+    link: "https://xenoptics.com/", // Company website
+    location: "THAILAND", // Company location
   },
   {
     title: "Software Engineer",
@@ -61,8 +62,8 @@ const experiences: ExperienceProps[] = [
     description:
       "As a Software Engineer, I mainly focused on frontend development using React to build user interfaces for an online booking system, resume management system, and HR system, while collaborating on backend integration with Laravel.",
     logo: "/assets/brycen.png",
-    link: "https://www.brycenmyanmar.com.mm/",
-    location: "MYANMAR",
+    link: "https://www.brycenmyanmar.com.mm/", // Company website
+    location: "MYANMAR", // Company location
   },
   {
     title: "Software Engineer Intern",
@@ -79,76 +80,30 @@ const experiences: ExperienceProps[] = [
     description:
       "During my Software Engineer Internship, I worked with JavaScript, PHP, React, and Laravel to develop student and employee registration systems.",
     logo: "/assets/brycen.png",
-    link: "https://www.brycenmyanmar.com.mm/",
-    location: "MYANMAR",
+    link: "https://www.brycenmyanmar.com.mm/", // Company website
+    location: "MYANMAR", // Company location
   },
 ];
 
-const shimmer = keyframes`
-  0% { background-position: -1000px 0; }
-  100% { background-position: 1000px 0; }
-`;
-
-const slideIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`;
-
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-`;
-
-const pulse = keyframes`
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-`;
-
+// StepIcon Component
 const StepIcon: React.FC<{ isCurrent?: boolean }> = ({ isCurrent }) => {
-  const theme = useTheme();
   return (
-    <Box
+    <Work
       sx={{
-        width: 40,
-        height: 40,
-        borderRadius: "50%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: isCurrent
-          ? "linear-gradient(45deg, #6a11cb, #2575fc)"
-          : theme.palette.grey[300],
-        boxShadow: isCurrent ? "0 4px 10px rgba(106, 17, 203, 0.3)" : "none",
-        transition: "all 0.3s ease",
-        animation: isCurrent ? `${pulse} 2s infinite ease-in-out` : "none",
+        color: isCurrent ? "primary.main" : "action.disabled", // Color only applied for the current step
       }}
-    >
-      <Work
-        sx={{
-          color: isCurrent ? "#fff" : theme.palette.grey[500],
-          fontSize: 20,
-        }}
-      />
-    </Box>
+    />
   );
 };
 
-const ExperienceStepper = () => {
-  const theme = useTheme();
+// Define the fade-in fade-out animation
+const fadeAnimation = keyframes`
+  0% { background-color: rgba(0, 128, 0, 0.2); }
+  50% { background-color: rgba(0, 128, 0, 0.5); }
+  100% { background-color: rgba(0, 128, 0, 0.2); }
+`;
 
+const ExperienceStepper = () => {
   return (
     <Box
       sx={{
@@ -161,122 +116,51 @@ const ExperienceStepper = () => {
         },
       }}
     >
-      <Typography
-        textAlign="center"
-        mb={5}
-        sx={{
-          position: "relative",
-          display: "inline-block",
-          left: "50%",
-          transform: "translateX(-50%)",
-          animation: `${fadeIn} 0.8s ease-out`,
-          "&::after": {
-            content: '""',
-            position: "absolute",
-            bottom: -10,
-            left: "25%",
-            width: "50%",
-            height: 4,
-            background: "linear-gradient(45deg, #6a11cb, #2575fc)",
-            borderRadius: 2,
-            animation: `${shimmer} 3s infinite linear`,
-          },
-        }}
-      >
-        <span className="font-extrabold bg-gradient-to-r from-purple-700 to-sky-600 bg-clip-text text-4xl font-bold tracking-tight text-gray-900 text-transparent hover:from-sky-600 hover:to-blue-700">
+      <Typography textAlign={"center"} mb={"50px"}>
+        <span className="ont-extrabold bg-gradient-to-r from-purple-700 to-sky-600 bg-clip-text text-4xl font-bold tracking-tight text-gray-900 text-transparent hover:from-sky-600 hover:to-blue-700">
           Professional Work Experiences
         </span>
       </Typography>
-
-      <Stepper
-        orientation="vertical"
-        sx={{
-          "& .MuiStepConnector-line": {
-            minHeight: 40,
-            borderColor: "rgba(106, 17, 203, 0.2)",
-            transition: "all 0.3s ease",
-          },
-        }}
-      >
+      <Stepper orientation="vertical">
         {experiences.map((exp, index) => {
-          const isCurrent = index === 0;
+          const isCurrent = index === 0; // Check if it's the first experience
           return (
-            <Step
-              key={index}
-              active={true}
-              sx={{
-                animation: `${slideIn} 0.5s ease-out ${index * 0.2}s both`,
-              }}
-            >
-              <StepLabel StepIconComponent={() => <StepIcon isCurrent={isCurrent} />}>
+            <Step key={index} active={true}>
+              <StepLabel
+                StepIconComponent={() => <StepIcon isCurrent={isCurrent} />}
+              >
                 <Grid
                   container
                   alignItems="center"
                   spacing={2}
-                  flexWrap="nowrap"
-                  sx={{
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      transform: "translateX(8px)",
-                    },
-                  }}
+                  flexWrap={"nowrap"}
                 >
                   <Grid item>
+                    {/* Company logo */}
                     <Avatar
                       alt={exp.company}
                       src={exp.logo}
-                      sx={{
-                        width: 56,
-                        height: 56,
-                        boxShadow: '0 2px 8px rgba(106, 17, 203, 0.1)',
-                        border: '1px solid rgba(106, 17, 203, 0.08)',
-                        transition: 'all 0.3s ease',
-                        animation: isCurrent ? `${pulse} 3s infinite ease-in-out` : "none",
-                        "&:hover": {
-                          transform: "scale(1.1) rotate(5deg)",
-                          boxShadow: '0 4px 12px rgba(106, 17, 203, 0.15)',
-                          border: '1px solid rgba(106, 17, 203, 0.15)',
-                        },
-                      }}
+                      sx={{ width: 56, height: 56 }}
                     />
                   </Grid>
                   <Grid item>
                     <Typography
                       variant="h6"
                       sx={{
-                        background: isCurrent
-                          ? "linear-gradient(45deg, #6a11cb, #2575fc)"
-                          : "none",
-                        WebkitBackgroundClip: isCurrent ? "text" : "none",
-                        WebkitTextFillColor: isCurrent ? "transparent" : "inherit",
-                        fontWeight: "bold",
-                        transition: "all 0.3s ease",
-                        "&:hover": {
-                          letterSpacing: "0.5px",
-                        },
+                        color: isCurrent ? "primary.main" : "text.primary",
                       }}
                     >
                       {exp.title}
                     </Typography>
-                    <Typography
-                      variant="subtitle1"
-                      sx={{
-                        color: theme.palette.text.secondary,
-                        "& a": {
-                          textDecoration: "none",
-                          color: "inherit",
-                          transition: "color 0.3s ease",
-                          "&:hover": {
-                            color: "#6a11cb",
-                            textDecoration: "underline",
-                          },
-                        },
-                      }}
-                    >
+                    <Typography variant="subtitle1" color="textSecondary">
                       <a
                         href={exp.link}
                         target="_blank"
                         rel="noopener noreferrer"
+                        style={{
+                          textDecoration: "underline",
+                          color: "inherit",
+                        }}
                       >
                         {exp.company} ({exp.location})
                       </a>
@@ -290,66 +174,39 @@ const ExperienceStepper = () => {
                   variant="outlined"
                   sx={{
                     mb: 2,
-                    background: isCurrent
-                      ? "linear-gradient(135deg, rgba(106, 17, 203, 0.05), rgba(37, 117, 252, 0.05))"
-                      : theme.palette.background.paper,
+                    backgroundColor: isCurrent
+                      ? "rgba(0, 128, 0, 0.1)"
+                      : "background.paper",
+                    borderColor: isCurrent ? "green" : undefined,
                     borderRadius: "12px",
                     backdropFilter: "blur(8px)",
-                    border: "1px solid rgba(106, 17, 203, 0.1)",
-                    transition: "all 0.5s ease",
-                    transform: "translateZ(0)",
-                    "&:hover": {
-                      transform: "translateY(-6px) translateZ(0) scale(1.02)",
-                      boxShadow: theme.palette.mode === 'light'
-                        ? "0 12px 28px rgba(106, 17, 203, 0.2)"
-                        : "0 12px 28px rgba(144, 202, 249, 0.2)",
-                    },
-                    position: "relative",
-                    overflow: "hidden",
-                    "&::before": isCurrent ? {
-                      content: '""',
-                      position: "absolute",
-                      top: 0,
-                      left: -1000,
-                      width: "200%",
-                      height: "100%",
-                      background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
-                      animation: `${shimmer} 3s infinite linear`,
-                    } : {},
+                    boxShadow: isCurrent ? "0 8px 32px rgba(0, 128, 0, 0.15)" : undefined,
+                    animation: isCurrent
+                      ? `${fadeAnimation} 2s ease-in-out infinite`
+                      : "slideIn 0.5s ease-out",
+                    "@keyframes slideIn": {
+                      "0%": { opacity: 0, transform: "translateX(-20px)" },
+                      "100%": { opacity: 1, transform: "translateX(0)" }
+                    }
                   }}
                 >
                   <CardContent>
-                    <Typography
-                      variant="body1"
-                      paragraph
-                      sx={{
-                        lineHeight: 1.8,
-                        color: theme.palette.text.primary,
-                        transition: "all 0.3s ease",
-                        "&:hover": {
-                          color: theme.palette.primary.main,
-                        },
-                      }}
-                    >
+                    <Typography variant="body1" paragraph>
                       {exp.description}
                     </Typography>
                     <Grid container spacing={1}>
                       {exp.techStack.map((tech, techIndex) => (
                         <Grid item key={techIndex}>
                           <Chip
+                            icon={
+                              tech === "JavaScript" ? (
+                                <JavascriptIcon />
+                              ) : tech === "PHP" ? (
+                                <PhpIcon />
+                              ) : undefined
+                            }
                             label={tech}
-                            sx={{
-                              background: "linear-gradient(45deg, rgba(106, 17, 203, 0.1), rgba(37, 117, 252, 0.1))",
-                              border: "1px solid rgba(106, 17, 203, 0.2)",
-                              color: theme.palette.text.primary,
-                              transition: "all 0.3s ease",
-                              animation: `${fadeIn} 0.3s ease-out ${techIndex * 0.1}s`,
-                              "&:hover": {
-                                transform: "translateY(-2px) scale(1.05)",
-                                background: "linear-gradient(45deg, rgba(106, 17, 203, 0.2), rgba(37, 117, 252, 0.2))",
-                                boxShadow: "0 4px 8px rgba(106, 17, 203, 0.15)",
-                              },
-                            }}
+                            variant="outlined"
                           />
                         </Grid>
                       ))}
@@ -361,23 +218,7 @@ const ExperienceStepper = () => {
           );
         })}
       </Stepper>
-      <Paper
-        sx={{
-          p: 3,
-          mt: 2,
-          background: "linear-gradient(135deg, rgba(106, 17, 203, 0.05), rgba(37, 117, 252, 0.05))",
-          border: "1px solid rgba(106, 17, 203, 0.1)",
-          borderRadius: "12px",
-          textAlign: "center",
-          color: theme.palette.text.secondary,
-          animation: `${fadeIn} 1s ease-out`,
-          transition: "all 0.3s ease",
-          "&:hover": {
-            transform: "scale(1.02)",
-            boxShadow: "0 4px 12px rgba(106, 17, 203, 0.1)",
-          },
-        }}
-      >
+      <Paper square elevation={0} sx={{ p: 3, mt: 2 }}>
         <Typography>End of Journey - for now!</Typography>
       </Paper>
     </Box>

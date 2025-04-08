@@ -14,10 +14,12 @@ import {
   CardContent,
   Avatar,
 } from "@mui/material";
-import JavascriptIcon from "@mui/icons-material/Javascript";
-import PhpIcon from "@mui/icons-material/Php";
-import { Work } from "@mui/icons-material";
-import { keyframes } from "@emotion/react"; // Import keyframes for animation
+import {
+  Work,
+  JavaScript as JavascriptIcon,
+  Code as PhpIcon,
+} from "@mui/icons-material";
+import { keyframes } from "@emotion/react";
 
 type ExperienceProps = {
   title: string;
@@ -26,8 +28,8 @@ type ExperienceProps = {
   techStack: string[];
   description: string;
   logo: string;
-  link: string; // Added link
-  location: string; // Added location
+  link: string;
+  location: string;
 };
 
 const experiences: ExperienceProps[] = [
@@ -45,8 +47,8 @@ const experiences: ExperienceProps[] = [
     description:
       "As a frontend developer, I am currently working on a network management system designed to monitor and manage machines across a network. My responsibilities include building user-friendly interfaces and creating interactive visualizations for real-time monitoring of machine statuses, performance metrics, and alert notifications. I collaborate closely with backend teams to integrate APIs, utilizing technologies such as React, TypeScript, and Redux for state management, along with Cytoscape.js for visualizing network topologies.",
     logo: "/assets/xenoptics.png",
-    link: "https://xenoptics.com/", // Company website
-    location: "THAILAND", // Company location
+    link: "https://xenoptics.com/",
+    location: "THAILAND",
   },
   {
     title: "Software Engineer",
@@ -63,8 +65,8 @@ const experiences: ExperienceProps[] = [
     description:
       "As a Software Engineer, I mainly focused on frontend development using React to build user interfaces for an online booking system, resume management system, and HR system, while collaborating on backend integration with Laravel.",
     logo: "/assets/brycen.png",
-    link: "https://www.brycenmyanmar.com.mm/", // Company website
-    location: "MYANMAR", // Company location
+    link: "https://www.brycenmyanmar.com.mm/",
+    location: "MYANMAR",
   },
   {
     title: "Software Engineer Intern",
@@ -81,8 +83,8 @@ const experiences: ExperienceProps[] = [
     description:
       "During my Software Engineer Internship, I worked with JavaScript, PHP, React, and Laravel to develop student and employee registration systems.",
     logo: "/assets/brycen.png",
-    link: "https://www.brycenmyanmar.com.mm/", // Company website
-    location: "MYANMAR", // Company location
+    link: "https://www.brycenmyanmar.com.mm/",
+    location: "MYANMAR",
   },
 ];
 
@@ -91,20 +93,20 @@ const StepIcon: React.FC<{ isCurrent?: boolean }> = ({ isCurrent }) => {
   return (
     <Work
       sx={{
-        color: isCurrent ? "primary.main" : "action.disabled", // Color only applied for the current step
+        color: isCurrent ? "primary.main" : "action.disabled",
       }}
     />
   );
 };
 
-// Define the fade-in fade-out animation
+// Define animations
 const fadeAnimation = keyframes`
   0% { background-color: rgba(25, 118, 210, 0.05); }
   50% { background-color: rgba(25, 118, 210, 0.15); }
   100% { background-color: rgba(25, 118, 210, 0.05); }
 `;
 
-const scale = keyframes`
+const scaleAnimation = keyframes`
   0% { transform: scale(1.02); }
   50% { transform: scale(1.025); }
   100% { transform: scale(1.02); }
@@ -123,6 +125,7 @@ const slideInFromLeft = keyframes`
 
 const ExperienceStepper = () => {
   const theme = useTheme();
+
   return (
     <Box
       sx={{
@@ -135,14 +138,29 @@ const ExperienceStepper = () => {
         },
       }}
     >
-      <Typography textAlign={"center"} mb={"50px"}>
-        <span className="ont-extrabold bg-gradient-to-r from-purple-700 to-sky-600 bg-clip-text text-4xl font-bold tracking-tight text-gray-900 text-transparent hover:from-sky-600 hover:to-blue-700">
-          Professional Work Experiences
-        </span>
+      <Typography
+        textAlign="center"
+        mb={6}
+        variant="h4"
+        fontWeight="bold"
+        sx={{
+          background: "linear-gradient(to right, #9333ea, #0284c7)",
+          backgroundClip: "text",
+          color: "transparent",
+          letterSpacing: "tight",
+          transition: "all 0.3s ease",
+          "&:hover": {
+            background: "linear-gradient(to right, #0284c7, #1d4ed8)",
+            backgroundClip: "text",
+          },
+        }}
+      >
+        Professional Work Experiences
       </Typography>
+
       <Stepper orientation="vertical">
         {experiences.map((exp, index) => {
-          const isCurrent = index === 0; // Check if it's the first experience
+          const isCurrent = index === 0;
           return (
             <Step key={index} active={true}>
               <StepLabel
@@ -152,10 +170,9 @@ const ExperienceStepper = () => {
                   container
                   alignItems="center"
                   spacing={2}
-                  flexWrap={"nowrap"}
+                  flexWrap="nowrap"
                 >
                   <Grid item>
-                    {/* Company logo */}
                     <Avatar
                       alt={exp.company}
                       src={exp.logo}
@@ -217,9 +234,8 @@ const ExperienceStepper = () => {
                         : "0 8px 32px rgba(144, 202, 249, 0.25)"
                       : undefined,
                     animation: isCurrent
-                      ? `${fadeAnimation} 3s ease-in-out infinite, scale 2s ease-in-out infinite`
-                      : "slideIn 0.5s ease-out",
-                    transform: isCurrent ? "scale(1.02)" : "none",
+                      ? `${fadeAnimation} 3s ease-in-out infinite, ${scaleAnimation} 2s ease-in-out infinite`
+                      : undefined,
                     transition: "all 0.3s ease-in-out",
                     "&:hover": {
                       transform: isCurrent ? "scale(1.03)" : "scale(1.01)",
@@ -228,10 +244,6 @@ const ExperienceStepper = () => {
                           ? "0 12px 40px rgba(25, 118, 210, 0.3)"
                           : "0 12px 40px rgba(144, 202, 249, 0.3)"
                         : "0 4px 20px rgba(0, 0, 0, 0.1)",
-                    },
-                    "@keyframes slideIn": {
-                      "0%": { opacity: 0, transform: "translateX(-20px)" },
-                      "100%": { opacity: 1, transform: "translateX(0)" },
                     },
                   }}
                 >

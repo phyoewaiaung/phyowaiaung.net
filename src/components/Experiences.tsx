@@ -14,11 +14,9 @@ import {
   CardContent,
   Avatar,
 } from "@mui/material";
-import {
-  Work,
-  JavaScript as JavascriptIcon,
-  Code as PhpIcon,
-} from "@mui/icons-material";
+import JavascriptIcon from "@mui/icons-material/Javascript";
+import PhpIcon from "@mui/icons-material/Php";
+import { Work } from "@mui/icons-material";
 import { keyframes } from "@emotion/react";
 
 type ExperienceProps = {

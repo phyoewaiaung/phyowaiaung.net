@@ -299,8 +299,10 @@ const ExperienceStepper = () => {
                     transition: "all 0.5s ease",
                     transform: "translateZ(0)",
                     "&:hover": {
-                      transform: "translateY(-4px) translateZ(0)",
-                      boxShadow: "0 8px 20px rgba(106, 17, 203, 0.15)",
+                      transform: "translateY(-6px) translateZ(0) scale(1.02)",
+                      boxShadow: theme.palette.mode === 'light'
+                        ? "0 12px 28px rgba(106, 17, 203, 0.2)"
+                        : "0 12px 28px rgba(144, 202, 249, 0.2)",
                     },
                     position: "relative",
                     overflow: "hidden",

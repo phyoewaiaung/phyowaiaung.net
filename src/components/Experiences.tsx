@@ -98,9 +98,15 @@ const StepIcon: React.FC<{ isCurrent?: boolean }> = ({ isCurrent }) => {
 
 // Define the fade-in fade-out animation
 const fadeAnimation = keyframes`
-  0% { background-color: rgba(0, 128, 0, 0.2); }
-  50% { background-color: rgba(0, 128, 0, 0.5); }
-  100% { background-color: rgba(0, 128, 0, 0.2); }
+  0% { background-color: rgba(25, 118, 210, 0.05); }
+  50% { background-color: rgba(25, 118, 210, 0.15); }
+  100% { background-color: rgba(25, 118, 210, 0.05); }
+`;
+
+const scale = keyframes`
+  0% { transform: scale(1.02); }
+  50% { transform: scale(1.025); }
+  100% { transform: scale(1.02); }
 `;
 
 const ExperienceStepper = () => {
@@ -175,15 +181,34 @@ const ExperienceStepper = () => {
                   sx={{
                     mb: 2,
                     backgroundColor: isCurrent
-                      ? "rgba(0, 128, 0, 0.1)"
+                      ? theme.palette.mode === 'light'
+                        ? "rgba(25, 118, 210, 0.08)"
+                        : "rgba(144, 202, 249, 0.08)"
                       : "background.paper",
-                    borderColor: isCurrent ? "green" : undefined,
-                    borderRadius: "12px",
+                    borderColor: isCurrent 
+                      ? theme.palette.primary.main
+                      : undefined,
+                    borderWidth: isCurrent ? "2px" : "1px",
+                    borderRadius: "16px",
                     backdropFilter: "blur(8px)",
-                    boxShadow: isCurrent ? "0 8px 32px rgba(0, 128, 0, 0.15)" : undefined,
+                    boxShadow: isCurrent 
+                      ? theme.palette.mode === 'light'
+                        ? "0 8px 32px rgba(25, 118, 210, 0.25)"
+                        : "0 8px 32px rgba(144, 202, 249, 0.25)"
+                      : undefined,
                     animation: isCurrent
-                      ? `${fadeAnimation} 2s ease-in-out infinite`
+                      ? `${fadeAnimation} 3s ease-in-out infinite, scale 2s ease-in-out infinite`
                       : "slideIn 0.5s ease-out",
+                    transform: isCurrent ? "scale(1.02)" : "none",
+                    transition: "all 0.3s ease-in-out",
+                    "&:hover": {
+                      transform: isCurrent ? "scale(1.03)" : "scale(1.01)",
+                      boxShadow: isCurrent 
+                        ? theme.palette.mode === 'light'
+                          ? "0 12px 40px rgba(25, 118, 210, 0.3)"
+                          : "0 12px 40px rgba(144, 202, 249, 0.3)"
+                        : "0 4px 20px rgba(0, 0, 0, 0.1)",
+                    },
                     "@keyframes slideIn": {
                       "0%": { opacity: 0, transform: "translateX(-20px)" },
                       "100%": { opacity: 1, transform: "translateX(0)" }

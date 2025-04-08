@@ -109,6 +109,17 @@ const scale = keyframes`
   100% { transform: scale(1.02); }
 `;
 
+const slideInFromLeft = keyframes`
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
 const ExperienceStepper = () => {
   return (
     <Box
@@ -154,6 +165,13 @@ const ExperienceStepper = () => {
                       variant="h6"
                       sx={{
                         color: isCurrent ? "primary.main" : "text.primary",
+                        animation: `${slideInFromLeft} 0.5s ease-out`,
+                        fontWeight: isCurrent ? 700 : 600,
+                        transition: "all 0.3s ease",
+                        "&:hover": {
+                          letterSpacing: "0.5px",
+                          color: "primary.main",
+                        },
                       }}
                     >
                       {exp.title}
@@ -181,18 +199,18 @@ const ExperienceStepper = () => {
                   sx={{
                     mb: 2,
                     backgroundColor: isCurrent
-                      ? theme.palette.mode === 'light'
+                      ? theme.palette.mode === "light"
                         ? "rgba(25, 118, 210, 0.08)"
                         : "rgba(144, 202, 249, 0.08)"
                       : "background.paper",
-                    borderColor: isCurrent 
+                    borderColor: isCurrent
                       ? theme.palette.primary.main
                       : undefined,
                     borderWidth: isCurrent ? "2px" : "1px",
                     borderRadius: "16px",
                     backdropFilter: "blur(8px)",
-                    boxShadow: isCurrent 
-                      ? theme.palette.mode === 'light'
+                    boxShadow: isCurrent
+                      ? theme.palette.mode === "light"
                         ? "0 8px 32px rgba(25, 118, 210, 0.25)"
                         : "0 8px 32px rgba(144, 202, 249, 0.25)"
                       : undefined,
@@ -203,16 +221,16 @@ const ExperienceStepper = () => {
                     transition: "all 0.3s ease-in-out",
                     "&:hover": {
                       transform: isCurrent ? "scale(1.03)" : "scale(1.01)",
-                      boxShadow: isCurrent 
-                        ? theme.palette.mode === 'light'
+                      boxShadow: isCurrent
+                        ? theme.palette.mode === "light"
                           ? "0 12px 40px rgba(25, 118, 210, 0.3)"
                           : "0 12px 40px rgba(144, 202, 249, 0.3)"
                         : "0 4px 20px rgba(0, 0, 0, 0.1)",
                     },
                     "@keyframes slideIn": {
                       "0%": { opacity: 0, transform: "translateX(-20px)" },
-                      "100%": { opacity: 1, transform: "translateX(0)" }
-                    }
+                      "100%": { opacity: 1, transform: "translateX(0)" },
+                    },
                   }}
                 >
                   <CardContent>

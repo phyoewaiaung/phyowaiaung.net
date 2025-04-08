@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   Box,
@@ -101,6 +100,23 @@ const slideIn = keyframes`
   }
 `;
 
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
+
+const pulse = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+`;
+
 const StepIcon: React.FC<{ isCurrent?: boolean }> = ({ isCurrent }) => {
   const theme = useTheme();
   return (
@@ -117,6 +133,7 @@ const StepIcon: React.FC<{ isCurrent?: boolean }> = ({ isCurrent }) => {
           : theme.palette.grey[300],
         boxShadow: isCurrent ? "0 4px 10px rgba(106, 17, 203, 0.3)" : "none",
         transition: "all 0.3s ease",
+        animation: isCurrent ? `${pulse} 2s infinite ease-in-out` : "none",
       }}
     >
       <Work
@@ -152,6 +169,7 @@ const ExperienceStepper = () => {
           display: "inline-block",
           left: "50%",
           transform: "translateX(-50%)",
+          animation: `${fadeIn} 0.8s ease-out`,
           "&::after": {
             content: '""',
             position: "absolute",
@@ -161,6 +179,7 @@ const ExperienceStepper = () => {
             height: 4,
             background: "linear-gradient(45deg, #6a11cb, #2575fc)",
             borderRadius: 2,
+            animation: `${shimmer} 3s infinite linear`,
           },
         }}
       >
@@ -175,6 +194,7 @@ const ExperienceStepper = () => {
           "& .MuiStepConnector-line": {
             minHeight: 40,
             borderColor: "rgba(106, 17, 203, 0.2)",
+            transition: "all 0.3s ease",
           },
         }}
       >
@@ -194,6 +214,12 @@ const ExperienceStepper = () => {
                   alignItems="center"
                   spacing={2}
                   flexWrap="nowrap"
+                  sx={{
+                    transition: "all 0.3s ease",
+                    "&:hover": {
+                      transform: "translateX(8px)",
+                    },
+                  }}
                 >
                   <Grid item>
                     <Avatar
@@ -205,8 +231,9 @@ const ExperienceStepper = () => {
                         boxShadow: '0 2px 8px rgba(106, 17, 203, 0.1)',
                         border: '1px solid rgba(106, 17, 203, 0.08)',
                         transition: 'all 0.3s ease',
+                        animation: isCurrent ? `${pulse} 3s infinite ease-in-out` : "none",
                         "&:hover": {
-                          transform: "scale(1.05)",
+                          transform: "scale(1.1) rotate(5deg)",
                           boxShadow: '0 4px 12px rgba(106, 17, 203, 0.15)',
                           border: '1px solid rgba(106, 17, 203, 0.15)',
                         },
@@ -223,6 +250,10 @@ const ExperienceStepper = () => {
                         WebkitBackgroundClip: isCurrent ? "text" : "none",
                         WebkitTextFillColor: isCurrent ? "transparent" : "inherit",
                         fontWeight: "bold",
+                        transition: "all 0.3s ease",
+                        "&:hover": {
+                          letterSpacing: "0.5px",
+                        },
                       }}
                     >
                       {exp.title}
@@ -237,6 +268,7 @@ const ExperienceStepper = () => {
                           transition: "color 0.3s ease",
                           "&:hover": {
                             color: "#6a11cb",
+                            textDecoration: "underline",
                           },
                         },
                       }}
@@ -264,9 +296,10 @@ const ExperienceStepper = () => {
                     borderRadius: "12px",
                     backdropFilter: "blur(8px)",
                     border: "1px solid rgba(106, 17, 203, 0.1)",
-                    transition: "all 0.3s ease",
+                    transition: "all 0.5s ease",
+                    transform: "translateZ(0)",
                     "&:hover": {
-                      transform: "translateY(-4px)",
+                      transform: "translateY(-4px) translateZ(0)",
                       boxShadow: "0 8px 20px rgba(106, 17, 203, 0.15)",
                     },
                     position: "relative",
@@ -290,6 +323,10 @@ const ExperienceStepper = () => {
                       sx={{
                         lineHeight: 1.8,
                         color: theme.palette.text.primary,
+                        transition: "all 0.3s ease",
+                        "&:hover": {
+                          color: theme.palette.primary.main,
+                        },
                       }}
                     >
                       {exp.description}
@@ -304,9 +341,11 @@ const ExperienceStepper = () => {
                               border: "1px solid rgba(106, 17, 203, 0.2)",
                               color: theme.palette.text.primary,
                               transition: "all 0.3s ease",
+                              animation: `${fadeIn} 0.3s ease-out ${techIndex * 0.1}s`,
                               "&:hover": {
-                                transform: "translateY(-2px)",
+                                transform: "translateY(-2px) scale(1.05)",
                                 background: "linear-gradient(45deg, rgba(106, 17, 203, 0.2), rgba(37, 117, 252, 0.2))",
+                                boxShadow: "0 4px 8px rgba(106, 17, 203, 0.15)",
                               },
                             }}
                           />
@@ -329,6 +368,12 @@ const ExperienceStepper = () => {
           borderRadius: "12px",
           textAlign: "center",
           color: theme.palette.text.secondary,
+          animation: `${fadeIn} 1s ease-out`,
+          transition: "all 0.3s ease",
+          "&:hover": {
+            transform: "scale(1.02)",
+            boxShadow: "0 4px 12px rgba(106, 17, 203, 0.1)",
+          },
         }}
       >
         <Typography>End of Journey - for now!</Typography>

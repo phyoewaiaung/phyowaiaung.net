@@ -34,7 +34,15 @@ const Profile: React.FC = () => {
       justifyContent={"center"}
       alignItems={"center"}
       spacing={2}
-      sx={{ padding: { xs: "0", md: "40px" } }}
+      sx={{
+        // py: 4,
+        px: {
+          xl: "300px",
+          lg: "200px",
+          md: "100px",
+          sm: "15px",
+        },
+      }}
     >
       <Grid
         sx={{
@@ -45,19 +53,19 @@ const Profile: React.FC = () => {
           textAlign: { xs: "center", md: "left" },
         }}
       >
-        <Box sx={{ maxWidth: "600px", padding: "0" }}>
-          <Typography 
+        <Box>
+          <Typography
             sx={{
               fontSize: { xs: "36px", md: "50px" },
               animation: "fadeIn 1s ease-in",
               "@keyframes fadeIn": {
                 "0%": { opacity: 0, transform: "translateY(-20px)" },
-                "100%": { opacity: 1, transform: "translateY(0)" }
-              }
+                "100%": { opacity: 1, transform: "translateY(0)" },
+              },
             }}
           >
             Hi, I'm{" "}
-            <span className="bg-gradient-to-r from-purple-700 via-pink-500 to-sky-600 bg-clip-text font-extrabold text-transparent animate-pulse">
+            <span className="animate-pulse bg-gradient-to-r from-purple-700 via-pink-500 to-sky-600 bg-clip-text font-extrabold text-transparent">
               PHYO
             </span>
           </Typography>
@@ -79,11 +87,13 @@ const Profile: React.FC = () => {
               px: { xs: "20px", md: "0" },
             }}
           >
-            A versatile Full-Stack Developer with 3 years of experience crafting robust web solutions. 
-            Proficient in both frontend (React, TypeScript, Vue.js) and backend (Node.js, PHP, Laravel) development,
-            I bring a comprehensive approach to building scalable, performant applications.
-            Experienced in developing enterprise-level solutions including network management systems,
-            booking platforms, and HR management applications.
+            A versatile Full-Stack Developer with 3 years of experience crafting
+            robust web solutions. Proficient in both frontend (React,
+            TypeScript, Vue.js) and backend (Node.js, PHP, Laravel) development,
+            I bring a comprehensive approach to building scalable, performant
+            applications. Experienced in developing enterprise-level solutions
+            including network management systems, booking platforms, and HR
+            management applications.
           </Typography>
 
           <Box
@@ -107,10 +117,10 @@ const Profile: React.FC = () => {
                 textTransform: "none",
                 fontSize: "16px",
                 transition: "all 0.3s ease",
-                '&:hover': {
-                  transform: 'translateY(-2px)',
-                  boxShadow: '0 8px 20px rgba(106, 17, 203, 0.2)',
-                }
+                "&:hover": {
+                  transform: "translateY(-2px)",
+                  boxShadow: "0 8px 20px rgba(106, 17, 203, 0.2)",
+                },
               }}
             >
               Download CV
@@ -176,7 +186,7 @@ const Profile: React.FC = () => {
             filter: "blur(60px)",
             opacity: 0.3,
             zIndex: -1,
-          }
+          },
         }}
       >
         <Box>
@@ -191,7 +201,8 @@ const Profile: React.FC = () => {
               boxShadow: "0 8px 20px rgba(106, 17, 203, 0.15)",
               transition: "all 0.3s ease-in-out",
               border: "3px solid transparent",
-              background: "linear-gradient(white, white) padding-box, linear-gradient(45deg, #6a11cb, #2575fc) border-box",
+              background:
+                "linear-gradient(white, white) padding-box, linear-gradient(45deg, #6a11cb, #2575fc) border-box",
             }}
             onMouseEnter={(e) =>
               (e.currentTarget.style.transform = "scale(1.05)")

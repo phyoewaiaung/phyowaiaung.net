@@ -53,7 +53,7 @@ const Profile: React.FC = () => {
           textAlign: { xs: "center", md: "left" },
         }}
       >
-        <Box>
+        <Box sx={{ width: "60%" }}>
           <Typography
             sx={{
               fontSize: { xs: "36px", md: "50px" },

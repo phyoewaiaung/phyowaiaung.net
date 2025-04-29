@@ -2,7 +2,9 @@ import { Box, IconButton, Typography, Button } from "@mui/material";
 import React from "react";
 import Grid from "@mui/material/Grid2";
 import { Email, LinkedIn, GitHub, Phone, Download } from "@mui/icons-material";
-import cvPdf from "../assets/resume-phyowaiaung.pdf";
+// Fix 1: Update the import path to match your project structure
+// Option A: If the PDF is in the public folder
+const cvPdfPath = "/assets/resume-phyowaiaung.pdf";
 
 const Profile: React.FC = () => {
   const contactLinks = [
@@ -29,8 +31,9 @@ const Profile: React.FC = () => {
   ];
 
   const handleOpenPdf = () => {
-  window.open(cvPdf, '_blank');
-};
+    // Fix 2: Use the correct path to open the PDF
+    window.open(cvPdfPath, '_blank');
+  };
   
   return (
     <Grid

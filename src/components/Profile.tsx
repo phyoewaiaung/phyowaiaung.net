@@ -97,7 +97,7 @@ const Profile: React.FC = () => {
           >
             <Button
               variant="contained"
-              href="/assets/cv-phyowaiaung.pdf"
+              href="/attached_assets/cv-phyowaiaung.pdf"
               target="_blank"
               startIcon={<Download />}
               sx={{

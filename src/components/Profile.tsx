@@ -2,6 +2,7 @@ import { Box, IconButton, Typography, Button } from "@mui/material";
 import React from "react";
 import Grid from "@mui/material/Grid2";
 import { Email, LinkedIn, GitHub, Phone, Download } from "@mui/icons-material";
+import cvPdf from "../assets/resume-phyowaiaung.pdf";
 
 const Profile: React.FC = () => {
   const contactLinks = [
@@ -27,6 +28,10 @@ const Profile: React.FC = () => {
     },
   ];
 
+  const handleOpenPdf = () => {
+  window.open(cvPdf, '_blank');
+};
+  
   return (
     <Grid
       container
@@ -97,8 +102,7 @@ const Profile: React.FC = () => {
           >
             <Button
               variant="contained"
-              href="/attached_assets/cv-phyowaiaung.pdf"
-              target="_blank"
+              onClick={handleOpenPdf}
               startIcon={<Download />}
               sx={{
                 background: "linear-gradient(45deg, #6a11cb, #2575fc)",
